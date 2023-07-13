@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtwanlimjb55o"]
+
+[ext_resource type="Script" path="res://main_dynamic_questions.gd" id="1_l4ll1"]
+[ext_resource type="PackedScene" uid="uid://it8ndx023c2b" path="res://single_page_of_questions.tscn" id="2_l2fcb"]
+
+[node name="main_dynamic_questions" type="Node2D"]
+script = ExtResource("1_l4ll1")
+
+[node name="instruction_dialog" type="AcceptDialog" parent="."]
+position = Vector2i(330, 276)
+visible = true
+
+[node name="single_page_of_questions" parent="." instance=ExtResource("2_l2fcb")]
+
+[node name="warning_dialog" type="AcceptDialog" parent="."]
+position = Vector2i(330, 276)

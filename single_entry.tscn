@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://v4tae3cyiar"]
+
+[ext_resource type="Script" path="res://button_group.gd" id="1_7p4ep"]
+[ext_resource type="Script" path="res://line_edit_group.gd" id="2_a1ixb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0akd"]
+font_size = 22
+font_color = Color(0.568627, 0.568627, 0.568627, 1)
+
+[node name="single_entry" type="Node2D"]
+position = Vector2(188, 4)
+
+[node name="button_group" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7p4ep")
+
+[node name="answer_button_a" type="CheckButton" parent="button_group"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 40.0
+offset_right = 48.0
+offset_bottom = 64.0
+
+[node name="answer_button_b" type="CheckButton" parent="button_group"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 76.0
+offset_right = 48.0
+offset_bottom = 100.0
+
+[node name="answer_button_c" type="CheckButton" parent="button_group"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 136.0
+
+[node name="answer_button_d" type="CheckButton" parent="button_group"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 148.0
+offset_right = 48.0
+offset_bottom = 172.0
+
+[node name="line_edit_group" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_a1ixb")
+
+[node name="question" type="LineEdit" parent="line_edit_group"]
+layout_mode = 0
+offset_right = 550.0
+offset_bottom = 31.0
+placeholder_text = "question"
+
+[node name="answer_a" type="LineEdit" parent="line_edit_group"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 36.0
+offset_right = 551.0
+offset_bottom = 67.0
+placeholder_text = "answer a"
+
+[node name="answer_b" type="LineEdit" parent="line_edit_group"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 72.0
+offset_right = 551.0
+offset_bottom = 103.0
+placeholder_text = "answer b"
+
+[node name="answer_c" type="LineEdit" parent="line_edit_group"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 108.0
+offset_right = 551.0
+offset_bottom = 139.0
+placeholder_text = "answer c"
+
+[node name="answer_d" type="LineEdit" parent="line_edit_group"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 144.0
+offset_right = 551.0
+offset_bottom = 175.0
+placeholder_text = "answer d"
+
+[node name="question_label" type="Label" parent="."]
+offset_left = -45.0
+offset_top = 122.0
+offset_right = 6.0
+offset_bottom = 164.0
+label_settings = SubResource("LabelSettings_j0akd")
+
+[connection signal="button_down" from="button_group/answer_button_a" to="button_group" method="_on_answer_button_a_button_down"]
+[connection signal="button_down" from="button_group/answer_button_b" to="button_group" method="_on_answer_button_b_button_down"]
+[connection signal="button_down" from="button_group/answer_button_c" to="button_group" method="_on_answer_button_c_button_down"]
+[connection signal="button_down" from="button_group/answer_button_d" to="button_group" method="_on_answer_button_d_button_down"]
+[connection signal="mouse_entered" from="line_edit_group/question" to="line_edit_group" method="_on_question_mouse_entered"]
+[connection signal="text_changed" from="line_edit_group/question" to="line_edit_group" method="_on_question_text_changed"]
+[connection signal="mouse_entered" from="line_edit_group/answer_a" to="line_edit_group" method="_on_answer_a_mouse_entered"]
+[connection signal="text_changed" from="line_edit_group/answer_a" to="line_edit_group" method="_on_answer_a_text_changed"]
+[connection signal="mouse_entered" from="line_edit_group/answer_b" to="line_edit_group" method="_on_answer_b_mouse_entered"]
+[connection signal="text_changed" from="line_edit_group/answer_b" to="line_edit_group" method="_on_answer_b_text_changed"]
+[connection signal="mouse_entered" from="line_edit_group/answer_c" to="line_edit_group" method="_on_answer_c_mouse_entered"]
+[connection signal="text_changed" from="line_edit_group/answer_c" to="line_edit_group" method="_on_answer_c_text_changed"]
+[connection signal="mouse_entered" from="line_edit_group/answer_d" to="line_edit_group" method="_on_answer_d_mouse_entered"]
+[connection signal="text_changed" from="line_edit_group/answer_d" to="line_edit_group" method="_on_answer_d_text_changed"]

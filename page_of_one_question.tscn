@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bor053ktem2tu"]
+
+[ext_resource type="PackedScene" uid="uid://v4tae3cyiar" path="res://single_entry.tscn" id="1_vnlvm"]
+[ext_resource type="Script" path="res://single_entry_1.gd" id="2_snso0"]
+[ext_resource type="PackedScene" uid="uid://bdjfwsw8pmg1m" path="res://page_navigation.tscn" id="3_bfg25"]
+
+[node name="page_of_one_question" type="Node2D"]
+
+[node name="first_section_outline" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(625, 210)
+offset_left = 35.0
+offset_right = 660.0
+offset_bottom = 210.0
+border_color = Color(0.466667, 0.556863, 0.552941, 1)
+editor_only = false
+
+[node name="first_section" type="Control" parent="."]
+custom_minimum_size = Vector2(625, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 35.0
+offset_right = 660.0
+offset_bottom = 210.0
+
+[node name="single_entry_1_three" parent="." instance=ExtResource("1_vnlvm")]
+position = Vector2(60, 10)
+script = ExtResource("2_snso0")
+
+[node name="page_navigation" parent="." instance=ExtResource("3_bfg25")]
+position = Vector2(774, 96)
+
+[connection signal="mouse_entered" from="first_section" to="single_entry_1_three" method="_on_first_section_mouse_entered"]

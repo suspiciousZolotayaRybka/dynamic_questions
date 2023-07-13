@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk6xv0fx227tg"]
+
+[ext_resource type="Script" path="res://all_questions.gd" id="1_kvtcf"]
+
+[node name="view_all_questions" type="Node2D"]
+
+[node name="scroll_container" type="ScrollContainer" parent="."]
+offset_left = 4.0
+offset_right = 1144.0
+offset_bottom = 646.0
+
+[node name="all_questions" type="Control" parent="scroll_container"]
+custom_minimum_size = Vector2(1157, 25)
+layout_mode = 2
+script = ExtResource("1_kvtcf")
+
+[node name="return" type="Button" parent="scroll_container/all_questions"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 1100.0
+offset_bottom = 70.0
+text = "Return to questions"
+
+[node name="not_has_entered_questions" type="AcceptDialog" parent="scroll_container/all_questions"]
+position = Vector2i(200, 200)
+dialog_text = "You haven't entered any questions! Return to the main page and enter questions."
+
+[node name="go_to_question" type="OptionButton" parent="scroll_container/all_questions"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 70.0
+offset_right = 1100.0
+offset_bottom = 120.0
+
+[connection signal="gui_input" from="scroll_container" to="scroll_container/all_questions" method="_on_scroll_container_gui_input"]
+[connection signal="scroll_ended" from="scroll_container" to="scroll_container/all_questions" method="_on_scroll_container_scroll_ended"]
+[connection signal="scroll_started" from="scroll_container" to="scroll_container/all_questions" method="_on_scroll_container_scroll_started"]
+[connection signal="pressed" from="scroll_container/all_questions/return" to="scroll_container/all_questions" method="_on_return_pressed"]
+[connection signal="item_selected" from="scroll_container/all_questions/go_to_question" to="scroll_container/all_questions" method="_on_go_to_question_item_selected"]
