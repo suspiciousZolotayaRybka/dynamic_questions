@@ -142,11 +142,12 @@ func _on_change_question_choice_index_pressed(index):
 		var element_data = temp_array.pop_at(QuestionProfile._get_current_question())
 		# Find the index the cuurent_question is at, and determine which index to reinsert it based on this
 		var reinsert_index: int
-		if (reinsert_index < QuestionProfile.current_question):
+		if (index <= QuestionProfile._get_current_question()):
 			reinsert_index = index - 1
 		else:
 			reinsert_index = index
 		# Reinsert the element
+		print("Question %d was reinserted at index number %d"%[QuestionProfile._get_current_question(), reinsert_index])
 		temp_array.insert(reinsert_index, element_data)
 		QuestionProfile._set_questions_and_answers(temp_array)
 		# Refresh the page
