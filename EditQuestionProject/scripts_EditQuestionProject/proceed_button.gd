@@ -54,4 +54,4 @@ func _on_confirm_questions_confirmed():
 	for i in QuestionProfile._get_num_questions():
 		temp_questions_and_answers.append(["","","","","",-1])
 	QuestionProfile._set_questions_and_answers(temp_questions_and_answers)
-	get_tree().change_scene_to_file("res://main_dynamic_questions.tscn")
+	get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/main_dynamic_questions.tscn")

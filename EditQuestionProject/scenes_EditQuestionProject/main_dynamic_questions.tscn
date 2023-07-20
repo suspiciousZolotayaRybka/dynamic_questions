@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/main_dynamic_questions.gd" id="1_l4ll1"]
 [ext_resource type="PackedScene" uid="uid://it8ndx023c2b" path="res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn" id="2_l2fcb"]
 
-
 [node name="main_dynamic_questions" type="Node2D"]
 script = ExtResource("1_l4ll1")
 

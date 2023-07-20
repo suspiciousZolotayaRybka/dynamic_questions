@@ -128,7 +128,7 @@ func _on_change_question_order_pressed():
 	print("Changed Question Order")
 
 func _on_view_all_questions_pressed():
-	get_tree().change_scene_to_file("res://view_all_questions.tscn")
+	get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/view_all_questions.tscn")
 
 func _on_save_question_file_pressed():
 	# Pop open the save dialog and warn the user not to overwrite root folders

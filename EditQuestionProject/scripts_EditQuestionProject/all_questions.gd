@@ -56,16 +56,16 @@ func _on_return_pressed():
 	if (QuestionProfile._get_current_page() == QuestionProfile._get_num_pages()):
 		if ((QuestionProfile._get_num_questions() % 3) == 2):
 			# If user is on the last page with two questions, return to this scene
-			get_tree().change_scene_to_file("res://page_of_two_questions.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/page_of_two_questions.tscn")
 		elif ((QuestionProfile._get_num_questions() % 3) == 1):
 			# If user is on the last page with one question, return to this scene
-			get_tree().change_scene_to_file("res://page_of_one_question.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/page_of_one_question.tscn")
 		else:
 			# Otherwise return to the single_page_of_questions
-			get_tree().change_scene_to_file("res://single_page_of_questions.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn")
 	else:
 		# Otherwise return to the single_page_of_questions
-		get_tree().change_scene_to_file("res://single_page_of_questions.tscn")
+		get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn")
 
 func _on_go_to_question_item_selected(index):
 	# Set the current_question and current_page 
@@ -80,16 +80,16 @@ func _on_go_to_question_item_selected(index):
 	if (QuestionProfile._get_current_page() == QuestionProfile._get_num_pages()):
 		if ((QuestionProfile._get_num_questions() % 3) == 2):
 			# If user is on the last page with two questions, return to this scene
-			get_tree().change_scene_to_file("res://page_of_two_questions.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/page_of_two_questions.tscn")
 		elif ((QuestionProfile._get_num_questions() % 3) == 1):
 			# If user is on the last page with one question, return to this scene
-			get_tree().change_scene_to_file("res://page_of_one_question.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/page_of_one_question.tscn")
 		else:
 			# Otherwise return to the single_page_of_questions
-			get_tree().change_scene_to_file("res://single_page_of_questions.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn")
 	else:
 		# Otherwise return to the single_page_of_questions
-		get_tree().change_scene_to_file("res://single_page_of_questions.tscn")
+		get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn")
 
 func _on_scroll_container_gui_input(event):
 	$return.position = Vector2(900, get_tree().get_root().find_child("scroll_container", true, false).scroll_vertical + 20)

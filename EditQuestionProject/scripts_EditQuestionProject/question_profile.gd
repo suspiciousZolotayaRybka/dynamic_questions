@@ -49,17 +49,17 @@ func _set_current_page(new_current_page):
 			# page_navigation.gd takes program control before the single_entry ready functions because of the signal from the back/next/option buttons (in the method PageNavigation.set_first_question_on_page())
 			# Setting booleans to true here (commented out above) causes a null instance crash,
 			# because page_navigation.gd attempts to reference the single_entries flags before their ready function is called
-			get_tree().change_scene_to_file("res://single_page_of_questions.tscn")
+			get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn")
 		pass
 	elif ((current_page == num_pages) and (num_questions % 3 == 1)):
 		# User is on the last page with only one question remaining
 		is_single_entry_2_disabled = true
 		is_single_entry_3_disabled = true
-		get_tree().change_scene_to_file("res://page_of_one_question.tscn")
+		get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/page_of_one_question.tscn")
 	else:
 		# User is on the last page with two questions remaining
 		is_single_entry_3_disabled = true
-		get_tree().change_scene_to_file("res://page_of_two_questions.tscn")
+		get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/page_of_two_questions.tscn")
 	emit_signal("current_page_changed")
 func _set_questions_and_answers(new_questions_and_answers):
 	questions_and_answers = new_questions_and_answers
