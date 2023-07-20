@@ -7,7 +7,6 @@
 # Change parsing to Godot built in JSON
 # Clean up program flow
 # Change_Position button
-# set_page function to inside of set_question function
 # ask_for_number_of_questions should have a load file button
 # BUGS
 # next not disabled for page with two question and page with one question

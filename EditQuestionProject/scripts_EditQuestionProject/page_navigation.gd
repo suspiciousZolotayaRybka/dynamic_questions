@@ -122,7 +122,9 @@ func _on_delete_question_pressed():
 		$delete_under_three_dialog.visible = true
 
 func _on_change_question_order_pressed():
-	# TODO
+	# var number_to_move_to: int
+	# get_tree().get_root().find_child("warning_dialog", true, false).dialog_text = dialog_string
+	# get_tree().get_root().find_child("warning_dialog", true, false).visible = true
 	print("Changed Question Order")
 
 func _on_view_all_questions_pressed():
