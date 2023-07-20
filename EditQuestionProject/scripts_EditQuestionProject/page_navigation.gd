@@ -122,9 +122,15 @@ func _on_delete_question_pressed():
 		$delete_under_three_dialog.visible = true
 
 func _on_change_question_order_pressed():
-	# var number_to_move_to: int
-	# get_tree().get_root().find_child("warning_dialog", true, false).dialog_text = dialog_string
-	# get_tree().get_root().find_child("warning_dialog", true, false).visible = true
+	var number_to_move_to: int
+	var change_question_popupmenu: PopupMenu = get_tree().get_root().find_child("change_question_choice", true, false)
+	change_question_popupmenu.clear()
+	change_question_popupmenu.add_item("Cancel")
+	for i in (QuestionProfile._get_num_questions()):
+		if (QuestionProfile.current_question == i):
+			continue
+		change_question_popupmenu.add_check_item("Change %d to %d"%[QuestionProfile._get_current_question() + 1, i + 1])
+	change_question_popupmenu.visible = true
 	print("Changed Question Order")
 
 func _on_view_all_questions_pressed():

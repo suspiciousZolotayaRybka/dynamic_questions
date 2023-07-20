@@ -92,29 +92,28 @@ func _ready():
 	pass
 	# TODO change
 #TODO delete
-#	QuestionProfile._set_num_questions(8)
-#	QuestionProfile._set_num_pages(3)
-#	QuestionProfile._set_current_page(1)
-#	QuestionProfile._set_current_question(1)
+	QuestionProfile._set_num_questions(8)
+	QuestionProfile._set_current_page(1)
+	QuestionProfile._set_current_question(1)
 	
-#	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
-#	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
-#	get_tree().get_root().find_child("third_section_outline", true, false).editor_only = true
+	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
+	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
+	get_tree().get_root().find_child("third_section_outline", true, false).editor_only = true
 
 #	var temp_array = []
 #	for i in 299:
 #		temp_array.append(["","","","","",-1])
 #	QuestionProfile._set_questions_and_answers(temp_array)
-#	QuestionProfile.questions_and_answers = [
-#	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
-#	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],
-#	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces beginning with the President's role as:","Commander in Chief","Secretary of Defense","head of the legislative and judicial branches","liaison to the Secretary of Defense for Policy",1],
-#	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces. Who serves as Commander in Chief and has final command authority?","the President","the Secretary of State","the Secretary of Defense","the Chairman Joint Chiefs of Staff",1],
-#	["The President serves as Commander in Chief of the Armed Forces and has final command authority. However as head of the executive branch he is subject to the checks and balances system of:","the legislative and judicial branches","the Armed Forces Policy Council","the Uniform Code of Military Justice","the Department of Defense and Secretary of Defense",3],
-#	["By statute the chain of command runs from the President through the Secretary of Defense to:","the Combatant Commanders","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff","the Secretaries of the military departments",1],
-#	["When forces are assigned to the Combatant Commanders administrative control over those forces still typically flows through:","the Combatant Commanders","their respective service branch","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff",2],
-#	["Although the chain of command runs from the President through the Secretary of Defense to the Combatant Commanders a provision of this law permits the President to authorize communications through the Chairman Joint Chiefs of Staff placing the Chairman in the communications chain of command.","Key West Agreement","Air Force Letter 35.3","National Security Act of 1947","Goldwater-Nichols DoD Reorganization Act of 1986",4]
-#	]
+	QuestionProfile.questions_and_answers = [
+	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
+	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],
+	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces beginning with the President's role as:","Commander in Chief","Secretary of Defense","head of the legislative and judicial branches","liaison to the Secretary of Defense for Policy",1],
+	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces. Who serves as Commander in Chief and has final command authority?","the President","the Secretary of State","the Secretary of Defense","the Chairman Joint Chiefs of Staff",1],
+	["The President serves as Commander in Chief of the Armed Forces and has final command authority. However as head of the executive branch he is subject to the checks and balances system of:","the legislative and judicial branches","the Armed Forces Policy Council","the Uniform Code of Military Justice","the Department of Defense and Secretary of Defense",3],
+	["By statute the chain of command runs from the President through the Secretary of Defense to:","the Combatant Commanders","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff","the Secretaries of the military departments",1],
+	["When forces are assigned to the Combatant Commanders administrative control over those forces still typically flows through:","the Combatant Commanders","their respective service branch","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff",2],
+	["Although the chain of command runs from the President through the Secretary of Defense to the Combatant Commanders a provision of this law permits the President to authorize communications through the Chairman Joint Chiefs of Staff placing the Chairman in the communications chain of command.","Key West Agreement","Air Force Letter 35.3","National Security Act of 1947","Goldwater-Nichols DoD Reorganization Act of 1986",4]
+	]
 #	QuestionProfile.questions_and_answers = [
 #	["What is your favorite pizza topping?", "Mushroom", "Pepperoni", "Cheese", "Sausage", 1],
 #	["What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 2],
@@ -170,7 +169,6 @@ func questions_and_answers_to_array(questions_and_answers_string: String):
 	
 	# Remove the beginning and ending brackets
 	var first_bracket_index: int = questions_and_answers_string.find("[", 0)
-	var length_string = len(questions_and_answers_string)
 	questions_and_answers_string = questions_and_answers_string.substr(first_bracket_index + 1, (len(questions_and_answers_string) - first_bracket_index) )
 	# Continue removing the last index until a combination of closing brackets no longer exist, to remove the last bracket
 	while (check_for_closing_brackets(questions_and_answers_string)):
@@ -188,7 +186,6 @@ func questions_and_answers_to_array(questions_and_answers_string: String):
 	
 	# Declare variables to fill in the array
 	var open_bracket_index: int
-	var close_bracket_index: int
 	var old_comma_index: int
 	var new_comma_index: int
 	var i: int = 0
@@ -218,11 +215,8 @@ func questions_and_answers_to_array(questions_and_answers_string: String):
 
 func check_for_closing_brackets(questions_and_answers_string: String) -> bool:
 	var i: int = 0
-	# TODO Delete bracket count
-	var bracket_count: int = 0
 	for character_i in questions_and_answers_string:
 		if (character_i == "]"):
-			bracket_count += 1
 			# Final closing brackets will only appear in the last index
 			if (i + 1 == len(questions_and_answers_string)):
 				# Only spaces should appear between the last bracket and the preceading closing bracket
