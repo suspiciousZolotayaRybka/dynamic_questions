@@ -78,7 +78,7 @@ func _get_num_pages():
 	return num_pages
 func _get_current_page():
 	return current_page
-func _get_questions_and_answers():
+func _get_questions_and_answers() -> Array:
 	return questions_and_answers
 func _get_current_section():
 	return current_section

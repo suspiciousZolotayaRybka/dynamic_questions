@@ -158,6 +158,9 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 
+[node name="change_question_choice" type="PopupMenu" parent="."]
+position = Vector2i(330, 276)
+
 [connection signal="mouse_entered" from="menu_options_reference_rect/reference_rect_boundary_entry" to="." method="_on_reference_rect_boundary_entry_mouse_entered"]
 [connection signal="mouse_entered" from="menu_options_reference_rect/reference_rect_boundary_4" to="." method="_on_reference_rect_boundary_4_mouse_entered"]
 [connection signal="mouse_entered" from="menu_options_reference_rect/reference_rect_boundary_3" to="." method="_on_reference_rect_boundary_3_mouse_entered"]
@@ -174,3 +177,4 @@ access = 2
 [connection signal="pressed" from="load_question_file" to="." method="_on_load_question_file_pressed"]
 [connection signal="file_selected" from="file_dialog_save_questions" to="." method="_on_file_dialog_save_questions_file_selected"]
 [connection signal="file_selected" from="file_dialog_load_questions" to="." method="_on_file_dialog_load_question_file_selected"]
+[connection signal="index_pressed" from="change_question_choice" to="." method="_on_change_question_choice_index_pressed"]

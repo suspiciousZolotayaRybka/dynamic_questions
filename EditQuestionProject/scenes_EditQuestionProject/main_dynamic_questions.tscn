@@ -14,9 +14,3 @@ visible = true
 
 [node name="warning_dialog" type="AcceptDialog" parent="."]
 position = Vector2i(330, 276)
-
-[node name="change_question_choice" type="PopupMenu" parent="."]
-position = Vector2i(330, 267)
-item_count = 1
-item_0/text = "Cancel"
-item_0/id = 0
