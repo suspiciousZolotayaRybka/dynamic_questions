@@ -122,10 +122,36 @@ func _on_delete_question_pressed():
 		$delete_under_three_dialog.visible = true
 
 func _on_change_question_order_pressed():
-	# var number_to_move_to: int
-	# get_tree().get_root().find_child("warning_dialog", true, false).dialog_text = dialog_string
-	# get_tree().get_root().find_child("warning_dialog", true, false).visible = true
+	var number_to_move_to: int
+	var change_question_popupmenu: PopupMenu = $change_question_choice
+	change_question_popupmenu.clear()
+	change_question_popupmenu.add_item("Cancel")
+	for i in (QuestionProfile._get_num_questions()):
+		if (QuestionProfile.current_question == i):
+			continue
+		change_question_popupmenu.add_check_item("Change %d to %d"%[QuestionProfile._get_current_question() + 1, i + 1])
+	change_question_popupmenu.visible = true
 	print("Changed Question Order")
+
+func _on_change_question_choice_index_pressed(index):
+	if (index == 0):
+		# User chose cancel
+		pass
+	else:
+		var temp_array: Array = QuestionProfile._get_questions_and_answers()
+		var element_data = temp_array.pop_at(QuestionProfile._get_current_question())
+		# Find the index the cuurent_question is at, and determine which index to reinsert it based on this
+		var reinsert_index: int
+		if (index <= QuestionProfile._get_current_question()):
+			reinsert_index = index - 1
+		else:
+			reinsert_index = index
+		# Reinsert the element
+		print("Question %d was reinserted at index number %d"%[QuestionProfile._get_current_question(), reinsert_index])
+		temp_array.insert(reinsert_index, element_data)
+		QuestionProfile._set_questions_and_answers(temp_array)
+		# Refresh the page
+		QuestionProfile._set_current_page(QuestionProfile._get_current_page())
 
 func _on_view_all_questions_pressed():
 	get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/view_all_questions.tscn")

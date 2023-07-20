@@ -15,7 +15,7 @@ border_color = Color(0.466667, 0.556863, 0.552941, 1)
 editor_only = false
 
 [node name="first_section" type="Control" parent="."]
-custom_minimum_size = Vector2(625, 0)
+custom_minimum_size = Vector2(750, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 35.0

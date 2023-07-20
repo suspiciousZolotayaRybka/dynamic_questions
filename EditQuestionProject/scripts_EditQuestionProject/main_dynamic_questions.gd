@@ -17,6 +17,9 @@
 extends Node2D
 
 func _ready():
+	
+	print(get_tree().get_root().find_child("change_question_choice", true, false))
+	
 	# Initial popup informing user to enter questions in order of difficulty
 	var instruction_dialog_string = "Please enter your questions in increasing level of difficulty.\n"
 	instruction_dialog_string += "           Question 1 = easiest\n"

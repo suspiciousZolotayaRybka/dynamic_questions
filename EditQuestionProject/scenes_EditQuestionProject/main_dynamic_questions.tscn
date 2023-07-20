@@ -14,5 +14,3 @@ visible = true
 
 [node name="warning_dialog" type="AcceptDialog" parent="."]
 position = Vector2i(330, 276)
-
-[node name="PopupMenu" type="PopupMenu" parent="."]
