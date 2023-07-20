@@ -2,13 +2,12 @@
 
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/all_questions.gd" id="1_kvtcf"]
 
-
 [node name="view_all_questions" type="Node2D"]
 
 [node name="scroll_container" type="ScrollContainer" parent="."]
 offset_left = 4.0
-offset_right = 1144.0
-offset_bottom = 646.0
+offset_right = 1284.0
+offset_bottom = 720.0
 
 [node name="all_questions" type="Control" parent="scroll_container"]
 custom_minimum_size = Vector2(1157, 25)
@@ -17,9 +16,9 @@ script = ExtResource("1_kvtcf")
 
 [node name="return" type="Button" parent="scroll_container/all_questions"]
 layout_mode = 0
-offset_left = 900.0
+offset_left = 1050.0
 offset_top = 20.0
-offset_right = 1100.0
+offset_right = 1250.0
 offset_bottom = 70.0
 text = "Return to questions"
 
@@ -29,9 +28,9 @@ dialog_text = "You haven't entered any questions! Return to the main page and en
 
 [node name="go_to_question" type="OptionButton" parent="scroll_container/all_questions"]
 layout_mode = 0
-offset_left = 900.0
+offset_left = 1050.0
 offset_top = 70.0
-offset_right = 1100.0
+offset_right = 1250.0
 offset_bottom = 120.0
 
 [connection signal="gui_input" from="scroll_container" to="scroll_container/all_questions" method="_on_scroll_container_gui_input"]

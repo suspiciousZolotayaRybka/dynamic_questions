@@ -6,19 +6,18 @@
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_2.gd" id="3_wrx3f"]
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_3.gd" id="4_vvi8f"]
 
-
 [node name="single_page_of_questions" type="Node2D"]
 
 [node name="first_section_outline" type="ReferenceRect" parent="."]
 custom_minimum_size = Vector2(625, 210)
 offset_left = 35.0
-offset_right = 660.0
+offset_right = 785.0
 offset_bottom = 210.0
 border_color = Color(0.466667, 0.556863, 0.552941, 1)
 editor_only = false
 
 [node name="second_section_outline" type="ReferenceRect" parent="."]
-custom_minimum_size = Vector2(625, 210)
+custom_minimum_size = Vector2(750, 210)
 offset_left = 35.0
 offset_top = 210.0
 offset_right = 660.0
@@ -29,7 +28,7 @@ editor_only = false
 [node name="third_section_outline" type="ReferenceRect" parent="."]
 offset_left = 35.0
 offset_top = 440.0
-offset_right = 660.0
+offset_right = 785.0
 offset_bottom = 650.0
 border_color = Color(0.466667, 0.556863, 0.552941, 1)
 editor_only = false
@@ -71,7 +70,7 @@ position = Vector2(59, 462)
 script = ExtResource("4_vvi8f")
 
 [node name="page_navigation" parent="." instance=ExtResource("2_ce1rw")]
-position = Vector2(774, 96)
+position = Vector2(900, 100)
 
 [node name="warning_dialog" type="AcceptDialog" parent="."]
 position = Vector2i(330, 276)

@@ -24,11 +24,10 @@ func _set_num_questions(new_num_questions):
 	# There are three questions per page
 	# If the number of questions is divisible by three, The number of pages is exactly num_questions / 3
 	# Otherwise, 1 must be added to num_questions / 3
-	# TODO move all page number finders here from other parts of the program, for when num_questions is changed
 	if (QuestionProfile._get_num_questions() % 3 == 0):
-		QuestionProfile._set_num_pages(QuestionProfile._get_num_questions() / 3) 
+		self.num_pages = QuestionProfile._get_num_questions() / 3
 	else:
-		QuestionProfile._set_num_pages((QuestionProfile._get_num_questions() / 3) + 1)
+		self.num_pages = (QuestionProfile._get_num_questions() / 3) + 1
 func _set_current_question(new_current_question):
 	current_question = new_current_question
 	emit_signal("current_question_changed")

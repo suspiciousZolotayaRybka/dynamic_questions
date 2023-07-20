@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/button_group.gd" id="1_7p4ep"]
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/line_edit_group.gd" id="2_a1ixb"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_j0akd"]
 font_size = 22
 font_color = Color(0.568627, 0.568627, 0.568627, 1)
@@ -55,7 +54,7 @@ script = ExtResource("2_a1ixb")
 
 [node name="question" type="LineEdit" parent="line_edit_group"]
 layout_mode = 0
-offset_right = 550.0
+offset_right = 675.0
 offset_bottom = 31.0
 placeholder_text = "question"
 
@@ -63,7 +62,7 @@ placeholder_text = "question"
 layout_mode = 0
 offset_left = 51.0
 offset_top = 36.0
-offset_right = 551.0
+offset_right = 676.0
 offset_bottom = 67.0
 placeholder_text = "answer a"
 
@@ -71,7 +70,7 @@ placeholder_text = "answer a"
 layout_mode = 0
 offset_left = 51.0
 offset_top = 72.0
-offset_right = 551.0
+offset_right = 676.0
 offset_bottom = 103.0
 placeholder_text = "answer b"
 
@@ -79,7 +78,7 @@ placeholder_text = "answer b"
 layout_mode = 0
 offset_left = 51.0
 offset_top = 108.0
-offset_right = 551.0
+offset_right = 676.0
 offset_bottom = 139.0
 placeholder_text = "answer c"
 
@@ -87,7 +86,7 @@ placeholder_text = "answer c"
 layout_mode = 0
 offset_left = 51.0
 offset_top = 144.0
-offset_right = 551.0
+offset_right = 676.0
 offset_bottom = 175.0
 placeholder_text = "answer d"
 

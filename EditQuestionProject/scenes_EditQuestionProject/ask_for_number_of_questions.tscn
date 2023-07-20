@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/proceed_button.gd" id="1_iucy3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lxaxv"]
-font_size = 50
+font_size = 57
 font_color = Color(0.568627, 0.568627, 0.568627, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5lels"]
@@ -21,25 +21,25 @@ label_settings = SubResource("LabelSettings_lxaxv")
 
 [node name="requirements_label" type="Label" parent="."]
 offset_left = 22.0
-offset_top = 96.0
+offset_top = 109.0
 offset_right = 479.0
-offset_bottom = 152.0
+offset_bottom = 165.0
 text = "Recommended: 200
 Max: 300"
 label_settings = SubResource("LabelSettings_5lels")
 
 [node name="proceed_line_edit" type="LineEdit" parent="."]
 offset_left = 20.0
-offset_top = 155.0
+offset_top = 182.0
 offset_right = 428.0
-offset_bottom = 212.0
+offset_bottom = 239.0
 placeholder_text = "# of questions"
 
 [node name="proceed_button" type="Button" parent="."]
 offset_left = 18.0
-offset_top = 217.0
+offset_top = 244.0
 offset_right = 126.0
-offset_bottom = 260.0
+offset_bottom = 287.0
 script = ExtResource("1_iucy3")
 
 [node name="confirm_questions" type="ConfirmationDialog" parent="proceed_button"]

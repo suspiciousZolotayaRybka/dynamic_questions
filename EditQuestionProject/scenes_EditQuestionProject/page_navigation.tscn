@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/page_navigation.gd" id="1_g1yib"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_gy5ph"]
 font_size = 22
 font_color = Color(0.568627, 0.568627, 0.568627, 1)

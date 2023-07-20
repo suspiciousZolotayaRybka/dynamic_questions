@@ -92,7 +92,6 @@ func _on_add_question_pressed():
 		var temp_array = QuestionProfile._get_questions_and_answers()
 		temp_array.insert(QuestionProfile._get_current_question(), ["","","","","",-1])
 		QuestionProfile._set_num_questions(QuestionProfile._get_num_questions() + 1)
-		update_num_pages()
 		update_page_options()
 		# Update the question label
 		$question_label.text = "Question %d/%d" % [QuestionProfile._get_current_question() + 1, QuestionProfile._get_num_questions()]
@@ -109,7 +108,6 @@ func _on_delete_question_pressed():
 		temp_array.pop_at(QuestionProfile._get_current_question())
 		QuestionProfile._set_questions_and_answers(temp_array)
 		QuestionProfile._set_num_questions(QuestionProfile._get_num_questions() - 1)
-		update_num_pages()
 		# Check to see if user was on the last question and deleted it, move them back a page if so
 		if (QuestionProfile._get_current_page() > QuestionProfile._get_num_pages()):
 			QuestionProfile._set_current_page(QuestionProfile._get_num_pages())
@@ -160,17 +158,7 @@ func _on_file_dialog_load_question_file_selected(path):
 		var temp_array = QuestionProfile.questions_and_answers_to_array(load_string)
 		QuestionProfile._set_questions_and_answers(temp_array)
 		QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
-		if (QuestionProfile._get_num_questions() % 3 == 0):
-			QuestionProfile._set_num_pages(QuestionProfile._get_num_questions() / 3) 
-		else:
-			QuestionProfile._set_num_pages((QuestionProfile._get_num_questions() / 3) + 1)
 		QuestionProfile._set_current_page(1)
-
-func update_num_pages():
-	if (QuestionProfile._get_num_questions() % 3 == 0):
-		QuestionProfile._set_num_pages(QuestionProfile._get_num_questions() / 3) 
-	else:
-		QuestionProfile._set_num_pages((QuestionProfile._get_num_questions() / 3) + 1)
 
 func update_page_options():
 	$page_option_button.clear()
