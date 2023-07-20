@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://it8ndx023c2b"]
 
-[ext_resource type="PackedScene" uid="uid://v4tae3cyiar" path="res://single_entry.tscn" id="1_dlrke"]
-[ext_resource type="PackedScene" uid="uid://bdjfwsw8pmg1m" path="res://page_navigation.tscn" id="2_ce1rw"]
-[ext_resource type="Script" path="res://single_entry_1.gd" id="2_gmfig"]
-[ext_resource type="Script" path="res://single_entry_2.gd" id="3_wrx3f"]
-[ext_resource type="Script" path="res://single_entry_3.gd" id="4_vvi8f"]
+[ext_resource type="PackedScene" uid="uid://v4tae3cyiar" path="res://EditQuestionProject/scenes_EditQuestionProject/single_entry.tscn" id="1_dlrke"]
+[ext_resource type="PackedScene" uid="uid://bdjfwsw8pmg1m" path="res://EditQuestionProject/scenes_EditQuestionProject/page_navigation.tscn" id="2_ce1rw"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_1.gd" id="2_gmfig"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_2.gd" id="3_wrx3f"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_3.gd" id="4_vvi8f"]
+
 
 [node name="single_page_of_questions" type="Node2D"]
 

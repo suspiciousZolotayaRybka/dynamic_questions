@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdjfwsw8pmg1m"]
 
-[ext_resource type="Script" path="res://page_navigation.gd" id="1_g1yib"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/page_navigation.gd" id="1_g1yib"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_gy5ph"]
 font_size = 22

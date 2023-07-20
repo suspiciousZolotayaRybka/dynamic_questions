@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk6xv0fx227tg"]
 
-[ext_resource type="Script" path="res://all_questions.gd" id="1_kvtcf"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/all_questions.gd" id="1_kvtcf"]
+
 
 [node name="view_all_questions" type="Node2D"]
 

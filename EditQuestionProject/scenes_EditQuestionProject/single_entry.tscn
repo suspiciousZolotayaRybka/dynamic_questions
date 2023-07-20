@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://v4tae3cyiar"]
 
-[ext_resource type="Script" path="res://button_group.gd" id="1_7p4ep"]
-[ext_resource type="Script" path="res://line_edit_group.gd" id="2_a1ixb"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/button_group.gd" id="1_7p4ep"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/line_edit_group.gd" id="2_a1ixb"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0akd"]
 font_size = 22

@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7s47dsbyrleu"]
 
-[ext_resource type="PackedScene" uid="uid://v4tae3cyiar" path="res://single_entry.tscn" id="1_ypcnx"]
-[ext_resource type="Script" path="res://single_entry_1.gd" id="2_57rw5"]
-[ext_resource type="Script" path="res://single_entry_2.gd" id="3_hgj52"]
-[ext_resource type="PackedScene" uid="uid://bdjfwsw8pmg1m" path="res://page_navigation.tscn" id="4_qpqxe"]
+[ext_resource type="PackedScene" uid="uid://v4tae3cyiar" path="res://EditQuestionProject/scenes_EditQuestionProject/single_entry.tscn" id="1_ypcnx"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_1.gd" id="2_57rw5"]
+[ext_resource type="Script" path="res://EditQuestionProject/scripts_EditQuestionProject/single_entry_2.gd" id="3_hgj52"]
+[ext_resource type="PackedScene" uid="uid://bdjfwsw8pmg1m" path="res://EditQuestionProject/scenes_EditQuestionProject/page_navigation.tscn" id="4_qpqxe"]
+
 
 [node name="page_of_two_questions" type="Node2D"]
 
