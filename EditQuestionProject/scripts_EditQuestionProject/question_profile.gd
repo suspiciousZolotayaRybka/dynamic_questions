@@ -96,9 +96,9 @@ func _ready():
 	QuestionProfile._set_current_page(1)
 	QuestionProfile._set_current_question(1)
 	
-	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
-	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
-	get_tree().get_root().find_child("third_section_outline", true, false).editor_only = true
+#	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
+#	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
+#	get_tree().get_root().find_child("third_section_outline", true, false).editor_only = true
 
 #	var temp_array = []
 #	for i in 299:
