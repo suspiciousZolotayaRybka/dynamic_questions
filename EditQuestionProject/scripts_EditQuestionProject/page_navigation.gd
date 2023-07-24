@@ -162,6 +162,9 @@ func _on_save_question_file_pressed():
 	$overwrite_warning.visible = true
 
 func _on_file_dialog_save_questions_file_selected(path):
+	#TODO delete
+	print(path)
+	#TODO delete
 	var save_string = QuestionProfile.questions_and_answers_to_string(QuestionProfile._get_questions_and_answers())
 	var is_questions_and_answers_valid = QuestionProfile.get_is_questions_and_answers_valid(save_string)
 	# Only save if the file is valid.
@@ -176,6 +179,9 @@ func _on_load_question_file_pressed():
 	$overwrite_warning.visible = true
 
 func _on_file_dialog_load_question_file_selected(path):
+	#TODO delete
+	print(path)
+	#TODO delete
 	var load_string
 	var load_file = FileAccess.open(path, FileAccess.READ)
 	if load_file != null:  # Ensure the file was successfully opened
