@@ -162,13 +162,12 @@ func _on_save_question_file_pressed():
 	$overwrite_warning.visible = true
 
 func _on_file_dialog_save_questions_file_selected(path):
-	var save_string = QuestionProfile.questions_and_answers_to_string(QuestionProfile._get_questions_and_answers())
-	var is_questions_and_answers_valid = QuestionProfile.get_is_questions_and_answers_valid(save_string)
-	# Only save if the file is valid.
-	if (is_questions_and_answers_valid):
-		var save_file = FileAccess.open(path, FileAccess.WRITE)
-		save_file.store_line(save_string.trim_suffix(" "))
-		save_file.close()
+	var json_string = JSON.stringify(QuestionProfile._get_questions_and_answers())
+	var save_file = FileAccess.open(path, FileAccess.WRITE)
+	save_file.store_line(json_string)
+	save_file.close()
+	# TODO also ensure there are only single quotes somehow, or double quoptes depending what I deduce from godot'sd automatic array implementation
+	#TODO add popup saying save was successful
 
 func _on_load_question_file_pressed():
 	# Pop open the load dialog and warn the user not to overwrite root folders
@@ -176,17 +175,30 @@ func _on_load_question_file_pressed():
 	$overwrite_warning.visible = true
 
 func _on_file_dialog_load_question_file_selected(path):
-	var load_string
+	# Opent he load file
+	var json_string
 	var load_file = FileAccess.open(path, FileAccess.READ)
 	if load_file != null:  # Ensure the file was successfully opened
-		load_string = load_file.get_as_text()
+		json_string = load_file.get_as_text()
 		load_file.close()
-	var is_questions_and_answers_valid = QuestionProfile.get_is_questions_and_answers_valid(load_string)
-	if (is_questions_and_answers_valid):
-		var temp_array = QuestionProfile.questions_and_answers_to_array(load_string)
-		QuestionProfile._set_questions_and_answers(temp_array)
-		QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
-		QuestionProfile._set_current_page(1)
+
+	# Retrieve data
+	var json = JSON.new()
+	var error = json.parse(json_string)
+	if error == OK:
+		var data_received = json.data
+		if typeof(data_received) == TYPE_ARRAY:
+			# Data is valid
+			QuestionProfile._set_questions_and_answers(data_received)
+			QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
+			QuestionProfile._set_current_page(1)
+		else:
+			# TODO switch to dialog box
+			print("Unexpected data")
+	else:
+		# TODO switch to dialog box
+		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+
 
 func update_page_options():
 	$page_option_button.clear()

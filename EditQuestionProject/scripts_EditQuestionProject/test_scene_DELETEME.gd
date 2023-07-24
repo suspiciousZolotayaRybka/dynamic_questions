@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	load_file_questions()
+	pass
 
 
 
@@ -34,8 +34,11 @@ func load_file_questions():
 	if error == OK:
 		var data_received = json.data
 		if typeof(data_received) == TYPE_ARRAY:
-			print(data_received) # Prints array
-			print("success, here is index 5: ", data_received[5])
+			# Data is valid
+			print(data_received[4][4])
+			QuestionProfile._set_questions_and_answers(data_received)
+			QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
+			QuestionProfile._set_current_page(1)
 		else:
 			print("Unexpected data")
 	else:
@@ -49,3 +52,6 @@ func load_file_questions():
 #		QuestionProfile._set_questions_and_answers(temp_array)
 #		QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
 #		QuestionProfile._set_current_page(1)
+
+# TODO does godot save arrays with single or double quotes, and is there a way to switch how it saves them?
+# TODO also ensure there are only single quotes somehow, or double quoptes depending what I deduce from godot'sd automatic array implementation
