@@ -166,8 +166,12 @@ func _on_file_dialog_save_questions_file_selected(path):
 	var save_file = FileAccess.open(path, FileAccess.WRITE)
 	save_file.store_line(json_string)
 	save_file.close()
-	# TODO also ensure there are only single quotes somehow, or double quoptes depending what I deduce from godot'sd automatic array implementation
-	#TODO add popup saying save was successful
+	if (false):
+		# If any notable save errors are ever found, implement them here
+		pass
+	else:
+		$save_load_error.dialog_text = "Save Successful!"
+		$save_load_error.visible = true
 
 func _on_load_question_file_pressed():
 	# Pop open the load dialog and warn the user not to overwrite root folders
@@ -181,22 +185,30 @@ func _on_file_dialog_load_question_file_selected(path):
 	if load_file != null:  # Ensure the file was successfully opened
 		json_string = load_file.get_as_text()
 		load_file.close()
-
+	else:
+		# An error occurred
+		$save_load_error.dialog_text = "Error opening file, null file found"
+		$save_load_error.visible = true
+	
 	# Retrieve data
 	var json = JSON.new()
 	var error = json.parse(json_string)
 	if error == OK:
 		var data_received = json.data
 		if typeof(data_received) == TYPE_ARRAY:
-			# Data is valid
+			# Data is valid, fill in QuestionProfile
 			QuestionProfile._set_questions_and_answers(data_received)
 			QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
 			QuestionProfile._set_current_page(1)
 		else:
-			# TODO switch to dialog box
+			# An error occurred
+			$save_load_error.dialog_text = "Unexpected data in file"
+			$save_load_error.visible = true
 			print("Unexpected data")
 	else:
-		# TODO switch to dialog box
+		# An error occurred
+		$save_load_error.dialog_text = "JSON Parse Error: " + json.get_error_message() + " in " + json_string + " at line " + str(json.get_error_line())
+		$save_load_error.visible = true
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 
 

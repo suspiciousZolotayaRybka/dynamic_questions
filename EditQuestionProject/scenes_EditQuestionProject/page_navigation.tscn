@@ -140,6 +140,9 @@ dialog_text = "You cannot have under three questions."
 position = Vector2i(330, 276)
 dialog_text = "You cannot have over three hundred questions."
 
+[node name="save_load_error" type="AcceptDialog" parent="."]
+position = Vector2i(330, 276)
+
 [node name="overwrite_warning" type="AcceptDialog" parent="."]
 title = "WARNING"
 position = Vector2i(330, 276)
