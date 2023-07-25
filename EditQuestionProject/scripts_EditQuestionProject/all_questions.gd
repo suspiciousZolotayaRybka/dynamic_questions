@@ -92,5 +92,6 @@ func _on_go_to_question_item_selected(index):
 		get_tree().change_scene_to_file("res://EditQuestionProject/scenes_EditQuestionProject/single_page_of_questions.tscn")
 
 func _on_scroll_container_gui_input(event):
+	# Move the return and go to buttons whenever any mouse movement or scroll occurs
 	$return.position = Vector2(900, get_tree().get_root().find_child("scroll_container", true, false).scroll_vertical + 20)
 	$go_to_question.position = Vector2(900, get_tree().get_root().find_child("scroll_container", true, false).scroll_vertical + 70)

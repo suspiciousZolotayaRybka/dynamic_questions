@@ -82,23 +82,20 @@ func _get_questions_and_answers() -> Array:
 	return questions_and_answers
 func _get_current_section():
 	return current_section
-
-	#TODO Delete
 func _get_is_single_entry_2_disabled():
 	return is_single_entry_2_disabled
 func _get_is_single_entry_3_disabled():
 	return is_single_entry_3_disabled
 func _ready():
 	pass
-	# TODO change
 #TODO delete
-	QuestionProfile._set_num_questions(18)
-	QuestionProfile._set_current_page(1)
-	QuestionProfile._set_current_question(1)
-	
-	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
-	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
-	get_tree().get_root().find_child("third_section_outline", true, false).editor_only = true
+#	QuestionProfile._set_num_questions(18)
+#	QuestionProfile._set_current_page(1)
+#	QuestionProfile._set_current_question(1)
+#
+#	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
+#	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
+#	get_tree().get_root().find_child("third_section_outline", true, false).editor_only = true
 
 #	var temp_array = []
 #	for i in 299:
@@ -114,26 +111,26 @@ func _ready():
 #	["When forces are assigned to the Combatant Commanders administrative control over those forces still typically flows through:","the Combatant Commanders","their respective service branch","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff",2],
 #	["Although the chain of command runs from the President through the Secretary of Defense to the Combatant Commanders a provision of this law permits the President to authorize communications through the Chairman Joint Chiefs of Staff placing the Chairman in the communications chain of command.","Key West Agreement","Air Force Letter 35.3","National Security Act of 1947","Goldwater-Nichols DoD Reorganization Act of 1986",4]
 #	]
-	QuestionProfile.questions_and_answers = [
-	["What is your favorite pizza topping?", "Mushroom", "Pepperoni", "Cheese", "Sausage", 1],
-	["What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 2],
-	["What is the color of the sun?", "Yellow", "Blue", "Red", "Green", 3],
-	["Who wrote the play 'Hamlet'?", "William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain", 4],
-	["What is the chemical symbol for water?", "H2O", "CO2", "NaCl", "O2", 1],
-	["What is the largest planet in our solar system?", "Jupiter", "Mars", "Saturn", "Neptune", 2],
-	["What is the tallest mountain in the world?", "Mount Everest", "K2", "Makalu", "Kangchenjunga", 2],
-	["Who painted the Mona Lisa?", "Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet", 4],
-	["What is the largest ocean on Earth?", "Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean", 1],
-	["What is the chemical symbol for gold?", "Au", "Ag", "Cu", "Fe", 3],
-	["Who discovered penicillin?", "Alexander Fleming", "Marie Curie", "Albert Einstein", "Isaac Newton", 4],
-	["What is the largest country by land area?", "Russia", "Canada", "China", "United States", 1],
-	["Who wrote the play 'Romeo and Juliet'?", "William Shakespeare", "Arthur Miller", "Tennessee Williams", "Henrik Ibsen", 2],
-	["What is the largest desert in the world?", "Sahara Desert", "Gobi Desert", "Atacama Desert", "Antarctica", 4],
-	["What is the symbol for the element oxygen?", "O", "H", "C", "N", 1],
-	["Who painted the famous artwork 'The Starry Night'?", "Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Salvador Dalí", 3],
-	["What is the capital of Japan?", "Tokyo", "Beijing", "Seoul", "Bangkok", 2],
-	["What is the capital of Japan?", "Tokyo", "Beijing", "Seoul", "Bangkok", 2]
-	]
+#	QuestionProfile.questions_and_answers = [
+#	["What is your favorite pizza topping?", "Mushroom", "Pepperoni", "Cheese", "Sausage", 1],
+#	["What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 2],
+#	["What is the color of the sun?", "Yellow", "Blue", "Red", "Green", 3],
+#	["Who wrote the play 'Hamlet'?", "William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain", 4],
+#	["What is the chemical symbol for water?", "H2O", "CO2", "NaCl", "O2", 1],
+#	["What is the largest planet in our solar system?", "Jupiter", "Mars", "Saturn", "Neptune", 2],
+#	["What is the tallest mountain in the world?", "Mount Everest", "K2", "Makalu", "Kangchenjunga", 2],
+#	["Who painted the Mona Lisa?", "Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet", 4],
+#	["What is the largest ocean on Earth?", "Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean", 1],
+#	["What is the chemical symbol for gold?", "Au", "Ag", "Cu", "Fe", 3],
+#	["Who discovered penicillin?", "Alexander Fleming", "Marie Curie", "Albert Einstein", "Isaac Newton", 4],
+#	["What is the largest country by land area?", "Russia", "Canada", "China", "United States", 1],
+#	["Who wrote the play 'Romeo and Juliet'?", "William Shakespeare", "Arthur Miller", "Tennessee Williams", "Henrik Ibsen", 2],
+#	["What is the largest desert in the world?", "Sahara Desert", "Gobi Desert", "Atacama Desert", "Antarctica", 4],
+#	["What is the symbol for the element oxygen?", "O", "H", "C", "N", 1],
+#	["Who painted the famous artwork 'The Starry Night'?", "Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Salvador Dalí", 3],
+#	["What is the capital of Japan?", "Tokyo", "Beijing", "Seoul", "Bangkok", 2],
+#	["What is the capital of Japan?", "Tokyo", "Beijing", "Seoul", "Bangkok", 2]
+#	]
 	#TODO Delete
 
 #Old parsing methods are in previous Git pushes in lines below this one, but have since been deleted in the msot previous releases and converted to JSON instead

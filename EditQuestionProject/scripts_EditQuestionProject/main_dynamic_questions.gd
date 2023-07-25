@@ -4,22 +4,16 @@
 # The QuestionProfile singleton is initialized in ask_for_number_of_questions
 # Contact: isaac.finehout@us.af.mil
 #TODO I need to congregate all TODO's right here
-# Change parsing to Godot built in JSON
 # Clean up program flow
-# Change_Position button
 # ask_for_number_of_questions should have a load file button
+#==================================================================
 # BUGS
+# Receive the error "transient parent has another exclusive child" for dialog boxes, but it's not hurting anything so I'm ignoring it
 # next not disabled for page with two question and page with one question
-# commas and brackets break code since they're used for parsing
-# Warning for incorrect string format only shows once per program run, doesn't show second time
-# .txt files automatically save strings with a space after them
 
 extends Node2D
 
 func _ready():
-	
-	print(get_tree().get_root().find_child("change_question_choice", true, false))
-	
 	# Initial popup informing user to enter questions in order of difficulty
 	var instruction_dialog_string = "Please enter your questions in increasing level of difficulty.\n"
 	instruction_dialog_string += "           Question 1 = easiest\n"
