@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cocycpvxt0dnp"]
+
+[ext_resource type="Texture2D" uid="uid://b5lsponcvbud6" path="res://Pong/Assets/Paddle.png" id="1_d2uja"]
+[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/Player.gd" id="1_revrd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjey0"]
+size = Vector2(29, 120)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(22, 328)
+script = ExtResource("1_revrd")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d2uja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_jjey0")

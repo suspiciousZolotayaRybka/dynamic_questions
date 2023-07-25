@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8bxis8xqcdtu"]
+
+[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/Question.gd" id="1_t35us"]
+[ext_resource type="FontFile" uid="uid://c64mrm4fssr2g" path="res://Pong/Assets/PoetsenOne-Regular.ttf" id="1_xd7y8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8fhy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhpri"]
+font = ExtResource("1_xd7y8")
+font_size = 40
+font_color = Color(0.85098, 0.847059, 0.843137, 1)
+
+[node name="Question" type="Area2D"]
+script = ExtResource("1_t35us")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.62172, 3.96698)
+shape = SubResource("RectangleShape2D_c8fhy")
+
+[node name="QuestionLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -51.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.9566, 1.96911)
+text = "?"
+label_settings = SubResource("LabelSettings_bhpri")
+
+[node name="QuestionLabelTimer" type="Timer" parent="QuestionLabel"]
+wait_time = 0.4
+
+[connection signal="timeout" from="QuestionLabel/QuestionLabelTimer" to="." method="_on_question_label_timer_timeout"]
