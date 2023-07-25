@@ -75,6 +75,7 @@ offset_left = 106.0
 offset_top = 56.0
 offset_right = 206.0
 offset_bottom = 96.0
+disabled = true
 text = "-->"
 
 [node name="page_option_button" type="OptionButton" parent="."]
