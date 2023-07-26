@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://bqdng2i7akj8t"]
 
 [ext_resource type="PackedScene" uid="uid://cocycpvxt0dnp" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerPlayer.tscn" id="1_3v0ep"]
-[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/Main.gd" id="1_tijf5"]
-[ext_resource type="PackedScene" uid="uid://devxocs6mn3yf" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/Opponent.tscn" id="2_nci7m"]
-[ext_resource type="PackedScene" uid="uid://b4dfc6tpgfqaq" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/Ball.tscn" id="4_seow1"]
+[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/PongSingpleplayerMain.gd" id="1_7bpqq"]
+[ext_resource type="PackedScene" uid="uid://devxocs6mn3yf" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerOpponent.tscn" id="2_nci7m"]
+[ext_resource type="PackedScene" uid="uid://b4dfc6tpgfqaq" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingpleplayerBall.tscn" id="4_seow1"]
 [ext_resource type="FontFile" uid="uid://c64mrm4fssr2g" path="res://Pong/Assets/PoetsenOne-Regular.ttf" id="6_qjyfj"]
 [ext_resource type="AudioStream" uid="uid://dnjq3uvwxmkcc" path="res://Pong/Assets/ping_pong_8bit_beeep.ogg" id="7_5fajm"]
 [ext_resource type="PackedScene" uid="uid://c8bxis8xqcdtu" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerQuestion.tscn" id="8_tx8ju"]
@@ -44,7 +44,7 @@ process_mode = 3
 
 [node name="Main" type="Node" parent="."]
 process_mode = 1
-script = ExtResource("1_tijf5")
+script = ExtResource("1_7bpqq")
 
 [node name="ColorRect" type="ColorRect" parent="Main"]
 custom_minimum_size = Vector2(1280, 720)

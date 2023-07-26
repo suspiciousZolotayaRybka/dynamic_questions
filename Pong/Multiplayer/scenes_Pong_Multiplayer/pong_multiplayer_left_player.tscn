@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdufvcjv0pt1w"]
+
+[ext_resource type="Script" path="res://Pong/Multiplayer/scripts_Pong_Multiplayer/PongMultiplayerLeftPlayer.gd" id="1_x0p0m"]
+[ext_resource type="Texture2D" uid="uid://b5lsponcvbud6" path="res://Pong/Assets/Paddle.png" id="2_sf5c8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_415im"]
+size = Vector2(30, 120)
+
+[node name="PongMultiplayerLeftPlayer" type="CharacterBody2D"]
+script = ExtResource("1_x0p0m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sf5c8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_415im")

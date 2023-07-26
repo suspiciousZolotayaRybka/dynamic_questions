@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ea3g4ww6f2s"]
+
+[ext_resource type="PackedScene" uid="uid://cdufvcjv0pt1w" path="res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_left_player.tscn" id="1_eegvq"]
+[ext_resource type="PackedScene" uid="uid://bynpt2wpcdww2" path="res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_right_player.tscn" id="2_vxdbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xn6f8"]
+size = Vector2(1280, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umhva"]
+size = Vector2(1280, 12)
+
+[node name="PongMultiplayerLevel" type="Node"]
+
+[node name="Main" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Main"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.129412, 0.14902, 1)
+
+[node name="PongMultiplayerLeftPlayer" parent="Main" instance=ExtResource("1_eegvq")]
+position = Vector2(22, 360)
+
+[node name="Cieling" type="StaticBody2D" parent="Main"]
+
+[node name="cieling_collision" type="CollisionShape2D" parent="Main/Cieling"]
+position = Vector2(639, -9)
+shape = SubResource("RectangleShape2D_xn6f8")
+metadata/_edit_group_ = true
+
+[node name="Floor" type="StaticBody2D" parent="Main"]
+position = Vector2(640, 727)
+metadata/_edit_group_ = true
+
+[node name="floor_collision" type="CollisionShape2D" parent="Main/Floor"]
+shape = SubResource("RectangleShape2D_umhva")
+
+[node name="PongMultiplayerRightPlayer" parent="Main" instance=ExtResource("2_vxdbl")]
+position = Vector2(1258, 360)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8bxis8xqcdtu"]
 
-[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/Question.gd" id="1_t35us"]
+[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/PongSingpleplayerQuestion.gd" id="1_paeia"]
 [ext_resource type="FontFile" uid="uid://c64mrm4fssr2g" path="res://Pong/Assets/PoetsenOne-Regular.ttf" id="1_xd7y8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8fhy"]
@@ -11,7 +11,7 @@ font_size = 40
 font_color = Color(0.85098, 0.847059, 0.843137, 1)
 
 [node name="Question" type="Area2D"]
-script = ExtResource("1_t35us")
+script = ExtResource("1_paeia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3.62172, 3.96698)

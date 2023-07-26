@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cocycpvxt0dnp"]
 
 [ext_resource type="Texture2D" uid="uid://b5lsponcvbud6" path="res://Pong/Assets/Paddle.png" id="1_d2uja"]
-[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/Player.gd" id="1_revrd"]
+[ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/PongSingpleplayerPlayer.gd" id="1_revrd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjey0"]
 size = Vector2(29, 120)
