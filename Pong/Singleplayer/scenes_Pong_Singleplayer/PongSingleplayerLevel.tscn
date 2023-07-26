@@ -21,11 +21,11 @@ size = Vector2(149.272, 505.704)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwbwc"]
 
-[sub_resource type="FontVariation" id="FontVariation_uqega"]
+[sub_resource type="FontVariation" id="FontVariation_q3prx"]
 base_font = ExtResource("6_qjyfj")
 
 [sub_resource type="LabelSettings" id="LabelSettings_67dub"]
-font = SubResource("FontVariation_uqega")
+font = SubResource("FontVariation_q3prx")
 font_size = 40
 font_color = Color(0.85098, 0.847059, 0.843137, 1)
 

@@ -94,7 +94,7 @@ shape = SubResource("RectangleShape2D_s1yu0")
 wait_time = 2.0
 one_shot = true
 
-[node name="PongMultiplayerPlayerScore" type="Label" parent="PongMultiplayerMain"]
+[node name="PongMultiplayerLeftPlayerScore" type="Label" parent="PongMultiplayerMain"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -111,7 +111,7 @@ label_settings = SubResource("LabelSettings_8is57")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PongMultiplayerOpponentScore" type="Label" parent="PongMultiplayerMain"]
+[node name="PongMultiplayerRightPlayerScore" type="Label" parent="PongMultiplayerMain"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -153,3 +153,8 @@ stream = ExtResource("7_xfgij")
 
 [node name="PongMultiplayerScoreTimer" type="Timer" parent="PongMultiplayerMain"]
 wait_time = 0.4
+
+[connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerLeftPlayerSide" to="PongMultiplayerMain" method="_on_pong_multiplayer_left_player_side_body_entered"]
+[connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerRightPlayerSide" to="PongMultiplayerMain" method="_on_pong_multiplayer_right_player_side_body_entered"]
+[connection signal="timeout" from="PongMultiplayerMain/PongMultiplayerCountdownTimer" to="PongMultiplayerMain" method="_on_pong_multiplayer_countdown_timer_timeout"]
+[connection signal="timeout" from="PongMultiplayerMain/PongMultiplayerScoreTimer" to="PongMultiplayerMain" method="_on_pong_multiplayer_score_timer_timeout"]

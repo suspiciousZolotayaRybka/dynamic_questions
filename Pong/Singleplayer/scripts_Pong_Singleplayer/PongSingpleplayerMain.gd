@@ -1,7 +1,7 @@
 extends Node
 
-var PlayerScore = 18
-var OpponentScore = 18
+var PlayerScore = 0
+var OpponentScore = 0
 
 signal player_lost_singleplayer_pong
 signal player_won_singleplayer_pong
@@ -48,10 +48,12 @@ func score_achieved():
 	$CountdownTimer.start()
 	$CountdownLabel.visible = true
 	$ScoreSound.play()
-	$Player.position.x = 22
-	$Player.velocity = Vector2(0, 0)
-	$Opponent.position.x = 1254
-	$Opponent.velocity = Vector2(0, 0)
+	# TODO delete after verification it's working
+	# $Player.position.x = 22
+	# $Player.velocity = Vector2(0, 0)
+	# $Opponent.position.x = 1254
+	# $Opponent.velocity = Vector2(0, 0)
+	# TODO delete after verification it's working
 
 func _on_countdown_timer_timeout():
 	get_tree().call_group("SingleplayerBallGroup", "restart_ball")
