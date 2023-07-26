@@ -1,14 +1,15 @@
 extends Node
 
-var PlayerScore = 0
-var OpponentScore = 0
+@export var PlayerScore: int = 0
+@export var OpponentScore: int = 0
+# TODO add multiplayer question functionality in singleplayer
+var temp_questions_and_answers: Array = QuestionProfile._get_questions_and_answers()
 
 signal player_lost_singleplayer_pong
 signal player_won_singleplayer_pong
 
 # TODO
-# 1 add w and s to left
-# 2 add up and down to right
+# add multiplayer functionality in singleplayer
 # Add different directions for question label, probably parameters based on whose paddle the ball hit last
 # Add functionality to question label, right sounds, scores and directions depending on parameter maybe store it in Querstin Profile
 # Make a game over screen
@@ -72,11 +73,11 @@ func _on_question_body_entered(_body):
 	QuestionProfile.current_question = question
 	var question_with_answers = QuestionProfile.questions_and_answers[question]
 	# Set the popup labels
-	get_tree().get_root().find_child("Question_Popup_Label", true, false).text = question_with_answers[QuestionProfile.QUESTION]
-	get_tree().get_root().find_child("Answer_A", true, false).text = "a. " + question_with_answers[QuestionProfile.ANSWER_A]
-	get_tree().get_root().find_child("Answer_B", true, false).text = "b. " + question_with_answers[QuestionProfile.ANSWER_B]
-	get_tree().get_root().find_child("Answer_C", true, false).text = "c. " + question_with_answers[QuestionProfile.ANSWER_C]
-	get_tree().get_root().find_child("Answer_D", true, false).text = "d. " + question_with_answers[QuestionProfile.ANSWER_D]
+	get_tree().get_root().find_child("PongSingleplayerQuestionPopupLabel", true, false).text = question_with_answers[QuestionProfile.QUESTION]
+	get_tree().get_root().find_child("PongSingleplayerAnswer_A", true, false).text = "a. " + question_with_answers[QuestionProfile.ANSWER_A]
+	get_tree().get_root().find_child("PongSingleplayerAnswer_B", true, false).text = "b. " + question_with_answers[QuestionProfile.ANSWER_B]
+	get_tree().get_root().find_child("PongSingleplayerAnswer_C", true, false).text = "c. " + question_with_answers[QuestionProfile.ANSWER_C]
+	get_tree().get_root().find_child("PongSingleplayerAnswer_D", true, false).text = "d. " + question_with_answers[QuestionProfile.ANSWER_D]
 	$QuestionPopup.visible = true
 	
 	# Pause the rest of the game

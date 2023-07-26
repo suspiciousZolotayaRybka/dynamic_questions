@@ -101,7 +101,12 @@ func _ready():
 #	var temp_array = []
 #	for i in 299:
 #		temp_array.append(["","","","","",-1])
-#	QuestionProfile._set_questions_and_answers(temp_array)
+##	QuestionProfile._set_questions_and_answers(temp_array)
+#	QuestionProfile.questions_and_answers = [
+#	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
+#	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],
+#	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces beginning with the President's role as:","Commander in Chief","Secretary of Defense","head of the legislative and judicial branches","liaison to the Secretary of Defense for Policy",1],
+#	]
 	QuestionProfile.questions_and_answers = [
 	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
 	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],
@@ -133,5 +138,44 @@ func _ready():
 #	["What is the capital of Japan?", "Tokyo", "Beijing", "Seoul", "Bangkok", 2]
 #	]
 	#TODO Delete
+
+func randomize_answers(question_with_answers) -> Array:
+	print("randomized answers")
+	return question_with_answers
+	# TODO
+
+func condense_question_and_answers(temp_question_and_answers: Array,
+									max_question_char: int,
+									max_answer_char: int) -> Array:
+	var char_count: int = 0
+	var current_char: int = 0
+	var question: String = temp_question_and_answers[QuestionProfile.QUESTION]
+	var answer: String
+	
+	# Place a line break every max_question_char spaces
+	for character in temp_question_and_answers[QuestionProfile.QUESTION]:
+		char_count += 1
+		if char_count == max_question_char:
+			question = question.substr(0, current_char) + "-\n" + question.substr(current_char, len(question))
+			char_count = 0
+		current_char += 1
+	temp_question_and_answers[QuestionProfile.QUESTION] = question
+	
+	# Place a line break every max_answer_char spaces
+	current_char = 0
+	char_count = 0
+	for i in range(1, 5):
+		answer = temp_question_and_answers[i]
+		for character in answer:
+			char_count += 1
+			if char_count == max_answer_char:
+				print(answer)
+				answer = answer.substr(0, current_char) + "-\n" + answer.substr(current_char, len(answer))
+				char_count = 0
+			current_char += 1
+		char_count = 0
+		temp_question_and_answers[i] = answer
+	
+	return temp_question_and_answers
 
 #Old parsing methods are in previous Git pushes in lines below this one, but have since been deleted in the msot previous releases and converted to JSON instead

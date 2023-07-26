@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://reetx24035fn"]
+
+[ext_resource type="FontFile" uid="uid://c64mrm4fssr2g" path="res://Pong/Assets/PoetsenOne-Regular.ttf" id="1_3oigt"]
+[ext_resource type="Script" path="res://Pong/Multiplayer/scripts_Pong_Multiplayer/pong_multiplayer_question.gd" id="1_exfis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciewx"]
+size = Vector2(22, 33)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4vt4"]
+font = ExtResource("1_3oigt")
+font_size = 40
+
+[node name="PongMultiplayerQuestion" type="Area2D"]
+script = ExtResource("1_exfis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_ciewx")
+
+[node name="PongMultiplayerQuestionLabel" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -26.0
+offset_right = 19.0
+offset_bottom = 25.0
+text = "?"
+label_settings = SubResource("LabelSettings_f4vt4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PongMultiplayerQuestionLabelTimer" type="Timer" parent="PongMultiplayerQuestionLabel"]
+wait_time = 0.4
+autostart = true
+
+[connection signal="timeout" from="PongMultiplayerQuestionLabel/PongMultiplayerQuestionLabelTimer" to="." method="_on_pong_multiplayer_question_label_timer_timeout"]

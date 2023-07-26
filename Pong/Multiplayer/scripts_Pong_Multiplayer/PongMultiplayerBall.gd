@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 var speed = 600
-var hits_to_question = 5
+var hits_to_question = 1
 var is_last_hit_left: bool = false
+# TODO delete all last_hit references to right?
 var is_last_hit_right: bool = false
 @onready var player_left: CharacterBody2D = get_tree().get_root().find_child("PongMultiplayerLeftPlayer", true, false)
 @onready var player_right: CharacterBody2D = get_tree().get_root().find_child("PongMultiplayerRightPlayer", true, false)
@@ -27,9 +28,8 @@ func _physics_process(delta):
 		$CollisionSound.play()
 		velocity = velocity.bounce(collision_object.get_normal())
 		if (hits_to_question == 0):
-			print("TODO showed question blinker")
-			#TODO get_tree().get_root().find_child("Main", true, false).show_question()
-			hits_to_question = 5
+			get_tree().get_root().find_child("PongMultiplayerMain", true, false).show_question()
+			hits_to_question = 1
 		# Reset speedy balls from questions, prevents infinite speeds from happening
 		if (velocity.x > 3):
 			velocity.x = 1
@@ -39,6 +39,11 @@ func _physics_process(delta):
 			velocity.y = 1
 		elif (velocity.y < -3):
 			velocity.y = -1
+		# Reset balls that have a x velocity causing them to only move vertically
+		if ((0 < velocity.x) and (velocity.x < .2)):
+			velocity.x = 1
+		if ((-.2 < velocity.x) and (velocity.x <= 0)):
+			velocity.x = -1
 		# Check to see who the last paddle was to hit the ball to prepare the proper question
 		if (collision_object.get_collider() == player_left):
 			is_last_hit_left = true

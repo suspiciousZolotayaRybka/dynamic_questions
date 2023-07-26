@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6ea3g4ww6f2s"]
+[gd_scene load_steps=19 format=3 uid="uid://6ea3g4ww6f2s"]
 
 [ext_resource type="Script" path="res://Pong/Multiplayer/scripts_Pong_Multiplayer/PongMultiplayerMain.gd" id="1_5bq87"]
 [ext_resource type="PackedScene" uid="uid://cdufvcjv0pt1w" path="res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_left_player.tscn" id="1_eegvq"]
@@ -7,6 +7,9 @@
 [ext_resource type="FontFile" uid="uid://c64mrm4fssr2g" path="res://Pong/Assets/PoetsenOne-Regular.ttf" id="5_ofdeq"]
 [ext_resource type="AudioStream" uid="uid://dnjq3uvwxmkcc" path="res://Pong/Assets/ping_pong_8bit_beeep.ogg" id="6_p3ctn"]
 [ext_resource type="AudioStream" uid="uid://bo5o248btyk7c" path="res://Pong/Assets/Error.mp3" id="7_xfgij"]
+[ext_resource type="PackedScene" uid="uid://reetx24035fn" path="res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_question.tscn" id="8_45ms8"]
+[ext_resource type="PackedScene" uid="uid://b0o558q0j6eud" path="res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_left_player_question_popup.tscn" id="9_pkfo7"]
+[ext_resource type="PackedScene" uid="uid://d4em2e4bq22pd" path="res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_right_player_question_popup.tscn" id="10_yhitw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xn6f8"]
 size = Vector2(1280, 12)
@@ -40,6 +43,7 @@ font_color = Color(0.952941, 0.313726, 0.160784, 1)
 [node name="PongMultiplayerLevel" type="Node"]
 
 [node name="PongMultiplayerMain" type="Node" parent="."]
+process_mode = 1
 script = ExtResource("1_5bq87")
 
 [node name="ColorRect" type="ColorRect" parent="PongMultiplayerMain"]
@@ -154,7 +158,20 @@ stream = ExtResource("7_xfgij")
 [node name="PongMultiplayerScoreTimer" type="Timer" parent="PongMultiplayerMain"]
 wait_time = 0.4
 
+[node name="PongMultiplayerQuestion" parent="PongMultiplayerMain" instance=ExtResource("8_45ms8")]
+position = Vector2(641, 337)
+scale = Vector2(2, 2)
+
+[node name="PongMultiplayerLeftPlayerQuestionPopup" parent="PongMultiplayerMain" instance=ExtResource("9_pkfo7")]
+process_mode = 2
+visible = false
+
+[node name="PongMultiplayerRightPlayerQuestionPopup" parent="PongMultiplayerMain" instance=ExtResource("10_yhitw")]
+process_mode = 2
+visible = false
+
 [connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerLeftPlayerSide" to="PongMultiplayerMain" method="_on_pong_multiplayer_left_player_side_body_entered"]
 [connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerRightPlayerSide" to="PongMultiplayerMain" method="_on_pong_multiplayer_right_player_side_body_entered"]
 [connection signal="timeout" from="PongMultiplayerMain/PongMultiplayerCountdownTimer" to="PongMultiplayerMain" method="_on_pong_multiplayer_countdown_timer_timeout"]
 [connection signal="timeout" from="PongMultiplayerMain/PongMultiplayerScoreTimer" to="PongMultiplayerMain" method="_on_pong_multiplayer_score_timer_timeout"]
+[connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerQuestion" to="PongMultiplayerMain" method="_on_pong_multiplayer_question_body_entered"]
