@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://bqdng2i7akj8t"]
 
-[ext_resource type="PackedScene" uid="uid://cocycpvxt0dnp" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/Player.tscn" id="1_3v0ep"]
+[ext_resource type="PackedScene" uid="uid://cocycpvxt0dnp" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerPlayer.tscn" id="1_3v0ep"]
 [ext_resource type="Script" path="res://Pong/Singleplayer/scripts_Pong_Singleplayer/Main.gd" id="1_tijf5"]
 [ext_resource type="PackedScene" uid="uid://devxocs6mn3yf" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/Opponent.tscn" id="2_nci7m"]
 [ext_resource type="PackedScene" uid="uid://b4dfc6tpgfqaq" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/Ball.tscn" id="4_seow1"]
 [ext_resource type="FontFile" uid="uid://c64mrm4fssr2g" path="res://Pong/Assets/PoetsenOne-Regular.ttf" id="6_qjyfj"]
 [ext_resource type="AudioStream" uid="uid://dnjq3uvwxmkcc" path="res://Pong/Assets/ping_pong_8bit_beeep.ogg" id="7_5fajm"]
-[ext_resource type="PackedScene" uid="uid://c8bxis8xqcdtu" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/Question.tscn" id="8_tx8ju"]
-[ext_resource type="PackedScene" uid="uid://b7vscjjerot53" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/QuestionPopup.tscn" id="9_ce0iw"]
+[ext_resource type="PackedScene" uid="uid://c8bxis8xqcdtu" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerQuestion.tscn" id="8_tx8ju"]
+[ext_resource type="PackedScene" uid="uid://b7vscjjerot53" path="res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerQuestionPopup.tscn" id="9_ce0iw"]
 [ext_resource type="AudioStream" uid="uid://bo5o248btyk7c" path="res://Pong/Assets/Error.mp3" id="10_u308a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvnoy"]

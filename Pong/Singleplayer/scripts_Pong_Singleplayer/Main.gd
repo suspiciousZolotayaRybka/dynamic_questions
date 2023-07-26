@@ -1,7 +1,7 @@
 extends Node
 
-var PlayerScore = 18
-var OpponentScore = 18
+var PlayerScore = 0
+var OpponentScore = 0
 
 signal player_lost_singleplayer_pong
 signal player_won_singleplayer_pong
