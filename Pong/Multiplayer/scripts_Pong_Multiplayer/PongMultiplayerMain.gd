@@ -1,5 +1,10 @@
 extends Node
 
+#TODO 
+#Randomizer
+#Answer question
+#End the game screen
+
 @export var LeftPlayerScore: int = 0
 @export var RightPlayerScore: int = 0
 
@@ -63,7 +68,6 @@ func _on_pong_multiplayer_countdown_timer_timeout():
 func show_question():
 	pong_multiplayer_question.position = Vector2 ([randi_range(150, 450), randi_range(830, 1000)][randi()%2], [randi_range(50, 260), randi_range(450, 600)][randi()%2])
 
-
 func _on_pong_multiplayer_question_body_entered(_body):
 	# Find the question to show to the user, randomize, condense to proper size, and pop out of the temp array
 	var question_num: int = randi_range(0, (len(temp_questions_and_answers) - 1))
@@ -95,15 +99,4 @@ func _on_pong_multiplayer_question_body_entered(_body):
 	
 	# Hide the question powerup
 	pong_multiplayer_question.position = Vector2(100, -300)
-	
-#	# Set the question to an array of q
-#	var question: int = randi_range(0, QuestionProfile.num_questions - 1)
-#	QuestionProfile.current_question = question
-#	# var question_with_answers = QuestionProfile.questions_and_answers[question]
-#	# Set the popup labels
-#	get_tree().get_root().find_child("Question_Popup_Label", true, false).text = question_with_answers[QuestionProfile.QUESTION]
-#	get_tree().get_root().find_child("Answer_A", true, false).text = "a. " + question_with_answers[QuestionProfile.ANSWER_A]
-#	get_tree().get_root().find_child("Answer_B", true, false).text = "b. " + question_with_answers[QuestionProfile.ANSWER_B]
-#	get_tree().get_root().find_child("Answer_C", true, false).text = "c. " + question_with_answers[QuestionProfile.ANSWER_C]
-#	get_tree().get_root().find_child("Answer_D", true, false).text = "d. " + question_with_answers[QuestionProfile.ANSWER_D]
-#	$QuestionPopup.visible = true
+
