@@ -14,7 +14,7 @@ signal player_won_singleplayer_pong
 # Make a game over screen
 
 func _ready():
-	get_tree().call_group("BallGroup", "stop_ball")
+	get_tree().call_group("SingleplayerBallGroup", "stop_ball")
 	$CountdownTimer.start()
 	$CountdownLabel.visible = true
 
@@ -44,7 +44,7 @@ func _on_score_timer_timeout():
 
 func score_achieved():
 	$Ball.position = Vector2 (640, 360)
-	get_tree().call_group("BallGroup", "stop_ball")
+	get_tree().call_group("SingleplayerBallGroup", "stop_ball")
 	$CountdownTimer.start()
 	$CountdownLabel.visible = true
 	$ScoreSound.play()
@@ -54,7 +54,7 @@ func score_achieved():
 	$Opponent.velocity = Vector2(0, 0)
 
 func _on_countdown_timer_timeout():
-	get_tree().call_group("BallGroup", "restart_ball")
+	get_tree().call_group("SingleplayerBallGroup", "restart_ball")
 	$CountdownLabel.visible = false
 
 func _process(_delta):

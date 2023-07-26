@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 var speed = 600
 var hits_to_question = 5
+var is_last_hit_left: bool = false
+var is_last_hit_right: bool = false
+@onready var player_left: CharacterBody2D = get_tree().get_root().find_child("PongMultiplayerLeftPlayer", true, false)
+@onready var player_right: CharacterBody2D = get_tree().get_root().find_child("PongMultiplayerRightPlayer", true, false)
 
 func _ready():
 	# randomize() doesn't use the same seed every single time
@@ -23,9 +27,10 @@ func _physics_process(delta):
 		$CollisionSound.play()
 		velocity = velocity.bounce(collision_object.get_normal())
 		if (hits_to_question == 0):
-			get_tree().get_root().find_child("PongSingleplayerMain", true, false).show_question()
+			print("TODO showed question blinker")
+			#TODO get_tree().get_root().find_child("Main", true, false).show_question()
 			hits_to_question = 5
-		# Reset speedy balls from correct questions
+		# Reset speedy balls from questions, prevents infinite speeds from happening
 		if (velocity.x > 3):
 			velocity.x = 1
 		elif (velocity.x < -3):
@@ -34,6 +39,13 @@ func _physics_process(delta):
 			velocity.y = 1
 		elif (velocity.y < -3):
 			velocity.y = -1
+		# Check to see who the last paddle was to hit the ball to prepare the proper question
+		if (collision_object.get_collider() == player_left):
+			is_last_hit_left = true
+			is_last_hit_right = false
+		if (collision_object.get_collider() == player_right):
+			is_last_hit_right = true
+			is_last_hit_left = false
 
 func stop_ball():
 	speed = 0

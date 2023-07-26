@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://0b384ee4vvwl"]
+
+[ext_resource type="Script" path="res://Pong/Multiplayer/scripts_Pong_Multiplayer/PongMultiplayerBall.gd" id="1_s4wlj"]
+[ext_resource type="Texture2D" uid="uid://wgcyo5v78mir" path="res://Pong/Assets/Ball.png" id="2_pf71k"]
+[ext_resource type="AudioStream" uid="uid://d0qh2phr0rgwr" path="res://Pong/Assets/ping_pong_8bit_plop.ogg" id="3_dcxuh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ew2ia"]
+radius = 16.0
+
+[node name="PongMultiplayerBall" type="CharacterBody2D" groups=["MultiplayerBallGroup"]]
+script = ExtResource("1_s4wlj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pf71k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ew2ia")
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dcxuh")

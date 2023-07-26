@@ -39,14 +39,14 @@ font = ExtResource("6_qjyfj")
 font_size = 40
 font_color = Color(0.952941, 0.313726, 0.160784, 1)
 
-[node name="Level" type="Node"]
+[node name="PongSingleplayerLevel" type="Node"]
 process_mode = 3
 
-[node name="Main" type="Node" parent="."]
+[node name="PongSingleplayerMain" type="Node" parent="."]
 process_mode = 1
 script = ExtResource("1_7bpqq")
 
-[node name="ColorRect" type="ColorRect" parent="Main"]
+[node name="ColorRect" type="ColorRect" parent="PongSingleplayerMain"]
 custom_minimum_size = Vector2(1280, 720)
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,49 +55,49 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.129412, 0.14902, 1)
 
-[node name="Player" parent="Main" instance=ExtResource("1_3v0ep")]
+[node name="Player" parent="PongSingleplayerMain" instance=ExtResource("1_3v0ep")]
 
-[node name="Cieling" type="StaticBody2D" parent="Main"]
+[node name="Cieling" type="StaticBody2D" parent="PongSingleplayerMain"]
 
-[node name="cieling_collision" type="CollisionShape2D" parent="Main/Cieling"]
+[node name="cieling_collision" type="CollisionShape2D" parent="PongSingleplayerMain/Cieling"]
 position = Vector2(639, -9)
 shape = SubResource("RectangleShape2D_nvnoy")
 metadata/_edit_group_ = true
 
-[node name="Floor" type="StaticBody2D" parent="Main"]
+[node name="Floor" type="StaticBody2D" parent="PongSingleplayerMain"]
 position = Vector2(640, 727)
 metadata/_edit_group_ = true
 
-[node name="floor_collision" type="CollisionShape2D" parent="Main/Floor"]
+[node name="floor_collision" type="CollisionShape2D" parent="PongSingleplayerMain/Floor"]
 shape = SubResource("RectangleShape2D_sm3fp")
 
-[node name="Opponent" parent="Main" instance=ExtResource("2_nci7m")]
+[node name="Opponent" parent="PongSingleplayerMain" instance=ExtResource("2_nci7m")]
 position = Vector2(1260, 319)
 
-[node name="Ball" parent="Main" instance=ExtResource("4_seow1")]
+[node name="Ball" parent="PongSingleplayerMain" instance=ExtResource("4_seow1")]
 position = Vector2(636, 357)
 
-[node name="PlayerSide" type="Area2D" parent="Main"]
+[node name="PlayerSide" type="Area2D" parent="PongSingleplayerMain"]
 position = Vector2(-79, 357)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/PlayerSide"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PongSingleplayerMain/PlayerSide"]
 scale = Vector2(0.954967, 1.40201)
 shape = SubResource("RectangleShape2D_ov13m")
 
-[node name="OpponentSide" type="Area2D" parent="Main"]
+[node name="OpponentSide" type="Area2D" parent="PongSingleplayerMain"]
 position = Vector2(1355, 363)
 scale = Vector2(7.175, 36.1758)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/OpponentSide"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PongSingleplayerMain/OpponentSide"]
 shape = SubResource("RectangleShape2D_lwbwc")
 
-[node name="CountdownTimer" type="Timer" parent="Main"]
+[node name="CountdownTimer" type="Timer" parent="PongSingleplayerMain"]
 wait_time = 2.0
 one_shot = true
 
-[node name="PlayerScore" type="Label" parent="Main"]
+[node name="PlayerScore" type="Label" parent="PongSingleplayerMain"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -114,7 +114,7 @@ label_settings = SubResource("LabelSettings_67dub")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OpponentScore" type="Label" parent="Main"]
+[node name="OpponentScore" type="Label" parent="PongSingleplayerMain"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -131,7 +131,7 @@ label_settings = SubResource("LabelSettings_y3qfd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CountdownLabel" type="Label" parent="Main"]
+[node name="CountdownLabel" type="Label" parent="PongSingleplayerMain"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -146,27 +146,27 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_rpvon")
 
-[node name="ScoreSound" type="AudioStreamPlayer2D" parent="Main"]
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="PongSingleplayerMain"]
 position = Vector2(620, 167.5)
 stream = ExtResource("7_5fajm")
 
-[node name="Question" parent="Main" instance=ExtResource("8_tx8ju")]
+[node name="Question" parent="PongSingleplayerMain" instance=ExtResource("8_tx8ju")]
 position = Vector2(100, -300)
 
-[node name="QuestionPopup" parent="Main" instance=ExtResource("9_ce0iw")]
+[node name="QuestionPopup" parent="PongSingleplayerMain" instance=ExtResource("9_ce0iw")]
 visible = false
 offset_right = -1280.0
 offset_bottom = -720.0
 
-[node name="ErrorSound" type="AudioStreamPlayer2D" parent="Main"]
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="PongSingleplayerMain"]
 position = Vector2(620, 167.5)
 stream = ExtResource("10_u308a")
 
-[node name="ScoreTimer" type="Timer" parent="Main"]
+[node name="ScoreTimer" type="Timer" parent="PongSingleplayerMain"]
 wait_time = 0.4
 
-[connection signal="body_entered" from="Main/PlayerSide" to="Main" method="_on_player_side_body_entered"]
-[connection signal="body_entered" from="Main/OpponentSide" to="Main" method="_on_opponent_side_body_entered"]
-[connection signal="timeout" from="Main/CountdownTimer" to="Main" method="_on_countdown_timer_timeout"]
-[connection signal="body_entered" from="Main/Question" to="Main" method="_on_question_body_entered"]
-[connection signal="timeout" from="Main/ScoreTimer" to="Main" method="_on_score_timer_timeout"]
+[connection signal="body_entered" from="PongSingleplayerMain/PlayerSide" to="PongSingleplayerMain" method="_on_player_side_body_entered"]
+[connection signal="body_entered" from="PongSingleplayerMain/OpponentSide" to="PongSingleplayerMain" method="_on_opponent_side_body_entered"]
+[connection signal="timeout" from="PongSingleplayerMain/CountdownTimer" to="PongSingleplayerMain" method="_on_countdown_timer_timeout"]
+[connection signal="body_entered" from="PongSingleplayerMain/Question" to="PongSingleplayerMain" method="_on_question_body_entered"]
+[connection signal="timeout" from="PongSingleplayerMain/ScoreTimer" to="PongSingleplayerMain" method="_on_score_timer_timeout"]
