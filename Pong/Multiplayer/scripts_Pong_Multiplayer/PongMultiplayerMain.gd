@@ -10,8 +10,10 @@ extends Node
 @export var question_with_answers: Array 
 
 @onready var pong_multiplayer_question: Area2D = $PongMultiplayerQuestion
-@onready var left_popup: Control = $PongMultiplayerLeftPlayerQuestionPopup
-@onready var right_popup: Control = $PongMultiplayerRightPlayerQuestionPopup
+@onready var left_popup_container: Control = $PongMultiplayerLeftPlayerQuestionPopupContainer
+@onready var right_popup_container: Control = $PongMultiplayerRightPlayerQuestionPopupContainer
+@onready var left_popup: Control# = $PongMultiplayerLeftPlayerQuestionPopupContainer/PongMultiplayerLeftPlayerQuestionPopup
+@onready var right_popup: Control# = $PongMultiplayerRightPlayerQuestionPopupContainer/PongMultiplayerRightPlayerQuestionPopup
 @onready var ball: CharacterBody2D = get_tree().get_root().find_child("PongMultiplayerBall", true, false)
 @onready var temp_questions_and_answers: Array = QuestionProfile._get_questions_and_answers().duplicate(true)
 @onready var countdown_timer: Timer = $PongMultiplayerCountdownTimer
@@ -24,13 +26,18 @@ func _ready():
 	get_tree().call_group("MultiplayerBallGroup", "stop_ball")
 	countdown_timer.start()
 	countdown_label.visible = true
-	# Connect left player's signals for answering
-	left_popup.left_player_chose.connect(_on_left_player_chose)
-	# Connect right player's signals for answering
-	right_popup.right_player_chose.connect(_on_right_player_chose)
-	# Connect the countdown timer timeout signals
-	left_popup.countdown_timer_timeout_left.connect(player_answered_incorrectly)
-	right_popup.countdown_timer_timeout_right.connect(player_answered_incorrectly)
+
+func retrieve_popup_signals(popup_signals_to_retrieve: String):
+	if (popup_signals_to_retrieve == "left"):
+		# Connect left player's signals for answering
+		left_popup.left_player_chose.connect(_on_left_player_chose)
+		# Connect the countdown timer timeout signals
+		left_popup.countdown_timer_timeout_left.connect(player_answered_incorrectly)
+	elif (popup_signals_to_retrieve == "right"):
+		# Connect right player's signals for answering
+		right_popup.right_player_chose.connect(_on_right_player_chose)
+		# Connect the countdown timer timeout signals
+		right_popup.countdown_timer_timeout_right.connect(player_answered_incorrectly)
 
 func _process(_delta):
 	countdown_label.text = str(int(countdown_timer.time_left + 1))
@@ -89,8 +96,16 @@ func _on_pong_multiplayer_question_body_entered(_body):
 	if (len(temp_questions_and_answers) <= 2):
 		temp_questions_and_answers = QuestionProfile._get_questions_and_answers().duplicate(true)
 	# See who hit the ball last, and open their according question_scene
+	# Free the queue for other player's question popups so they do not interfere
 	var is_last_hit_left: bool = ball.is_last_hit_left
 	if (is_last_hit_left):
+		if (right_popup):
+			right_popup.queue_free()
+		left_popup_container.add_child(get_tree().get_root().find_child("PongMultiplayerLeftPlayerQuestionPopup", true, false))
+		left_popup = left_popup_container.get_child(0)
+		# Retrieve the popup signals for left_popup
+		retrieve_popup_signals("left")
+		# Set the label settings of the popup
 		get_tree().get_root().find_child("PongMultiplayerLeftQuestionPopupLabel", true, false).text = question_with_answers[QuestionProfile.QUESTION]
 		get_tree().get_root().find_child("PongMultiplayerLeftAnswer_A", true, false).text = "a. " + question_with_answers[QuestionProfile.ANSWER_A]
 		get_tree().get_root().find_child("PongMultiplayerLeftAnswer_B", true, false).text = "b. " + question_with_answers[QuestionProfile.ANSWER_B]
@@ -99,6 +114,13 @@ func _on_pong_multiplayer_question_body_entered(_body):
 		left_popup.countdown_timer.start()
 		left_popup.visible = true
 	else:
+		if (left_popup):
+			left_popup.queue_free()
+		right_popup_container.add_child(get_tree().get_root().find_child("PongMultiplayerRightPlayerQuestionPopup", true, false))
+		right_popup = right_popup_container.get_child(0)
+		# Retrieve the popup signals for right_popup
+		retrieve_popup_signals("right")
+		# Set the label settings of the popup
 		get_tree().get_root().find_child("PongMultiplayerRightQuestionPopupLabel", true, false).text = question_with_answers[QuestionProfile.QUESTION]
 		get_tree().get_root().find_child("PongMultiplayerRightAnswer_A", true, false).text = "a. " + question_with_answers[QuestionProfile.ANSWER_A]
 		get_tree().get_root().find_child("PongMultiplayerRightAnswer_B", true, false).text = "b. " + question_with_answers[QuestionProfile.ANSWER_B]
@@ -139,8 +161,3 @@ func player_answered_incorrectly(x_player: String):
 	elif (x_player == "right"):
 		pass
 	print(x_player, " answered incorrectly")
-
-func hide_question_scene(popup: Control):
-	print("All set invisible")
-	#left_popup.visible = false
-	#right_popup.visible = false
