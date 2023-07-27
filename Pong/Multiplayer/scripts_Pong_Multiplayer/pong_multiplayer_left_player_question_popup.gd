@@ -3,16 +3,31 @@ extends Control
 @onready var countdown_label: Label = $PongMultiplayerLeftQuestionCountdownLabel
 @onready var countdown: Timer = $PongMultiplayerLeftQuestionCountdown
 
+signal left_player_chose_a
+signal left_player_chose_b
+signal left_player_chose_c
+signal left_player_chose_d
+
 # Listen for user input
 func _process(_delta):
-	if Input.is_physical_key_pressed(KEY_Z):
-		print("pressed z")
-	if Input.is_physical_key_pressed(KEY_X):
-		print("pressed x")
-	if Input.is_physical_key_pressed(KEY_C):
-		print("pressed c")
-	if Input.is_physical_key_pressed(KEY_V):
-		print("pressed v")
+	# Emit a signal depending on what the user enters
+	# Hide the player 
+	if Input.is_physical_key_pressed(KEY_1):
+		left_player_chose_a.emit()
+		self.visible = false
+		get_tree().paused = false
+	if Input.is_physical_key_pressed(KEY_2):
+		left_player_chose_b.emit()
+		self.visible = false
+		get_tree().paused = false
+	if Input.is_physical_key_pressed(KEY_3):
+		left_player_chose_c.emit()
+		self.visible = false
+		get_tree().paused = false
+	if Input.is_physical_key_pressed(KEY_4):
+		left_player_chose_d.emit()
+		self.visible = false
+		get_tree().paused = false
 	countdown_label.text = str(int(countdown.time_left))
 
 # Decide whether or not the answer is correct based on user input.

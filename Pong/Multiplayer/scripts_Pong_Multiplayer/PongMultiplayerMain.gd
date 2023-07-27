@@ -7,23 +7,37 @@ extends Node
 
 @export var LeftPlayerScore: int = 0
 @export var RightPlayerScore: int = 0
+@export var question_with_answers: Array 
 
 @onready var pong_multiplayer_question: Area2D = $PongMultiplayerQuestion
 @onready var left_popup: Control = $PongMultiplayerLeftPlayerQuestionPopup
 @onready var right_popup: Control = $PongMultiplayerRightPlayerQuestionPopup
 @onready var ball: CharacterBody2D = get_tree().get_root().find_child("PongMultiplayerBall", true, false)
 @onready var temp_questions_and_answers: Array = QuestionProfile._get_questions_and_answers().duplicate(true)
+@onready var countdown_timer: Timer = $PongMultiplayerCountdownTimer
+@onready var countdown_label: Label = $PongMultiplayerCountdownLabel
+
 
 signal left_player_won_multiplayer_pong
 signal right_player_won_multiplayer_pong
 
 func _ready():
 	get_tree().call_group("MultiplayerBallGroup", "stop_ball")
-	$PongMultiplayerCountdownTimer.start()
-	$PongMultiplayerCountdownLabel.visible = true
+	countdown_timer.start()
+	countdown_label.visible = true
+	# Connect left player's signals for answering
+	left_popup.left_player_chose_a.connect(_on_left_player_chose_a)
+	left_popup.left_player_chose_b.connect(_on_left_player_chose_b)
+	left_popup.left_player_chose_c.connect(_on_left_player_chose_c)
+	left_popup.left_player_chose_d.connect(_on_left_player_chose_d)
+	# Connect right player's signals for answering
+	right_popup.right_player_chose_a.connect(_on_right_player_chose_a)
+	right_popup.right_player_chose_b.connect(_on_right_player_chose_b)
+	right_popup.right_player_chose_c.connect(_on_right_player_chose_c)
+	right_popup.right_player_chose_d.connect(_on_right_player_chose_d)
 
 func _process(_delta):
-	$PongMultiplayerCountdownLabel.text = str(int($PongMultiplayerCountdownTimer.time_left + 1))
+	countdown_label.text = str(int(countdown_timer.time_left + 1))
 
 func _on_pong_multiplayer_left_player_side_body_entered(_body):
 	score_achieved()
@@ -57,13 +71,13 @@ func _on_pong_multiplayer_score_timer_timeout():
 func score_achieved():
 	$PongMultiplayerBall.position = Vector2 (640, 360)
 	get_tree().call_group("MultiplayerBallGroup", "stop_ball")
-	$PongMultiplayerCountdownTimer.start()
-	$PongMultiplayerCountdownLabel.visible = true
+	countdown_timer.start()
+	countdown_label.visible = true
 	$PongMultiplayerScoreSound.play()
 
 func _on_pong_multiplayer_countdown_timer_timeout():
 	get_tree().call_group("MultiplayerBallGroup", "restart_ball")
-	$PongMultiplayerCountdownLabel.visible = false
+	countdown_label.visible = false
 
 func show_question():
 	pong_multiplayer_question.position = Vector2 ([randi_range(150, 450), randi_range(830, 1000)][randi()%2], [randi_range(50, 260), randi_range(450, 600)][randi()%2])
@@ -71,8 +85,9 @@ func show_question():
 func _on_pong_multiplayer_question_body_entered(_body):
 	# Find the question to show to the user, randomize, condense to proper size, and pop out of the temp array
 	var question_num: int = randi_range(0, (len(temp_questions_and_answers) - 1))
-	var question_with_answers: Array = temp_questions_and_answers.pop_at(question_num)
-	question_with_answers = QuestionProfile.condense_question_with_answers(question_with_answers, 45, 65)
+	question_with_answers.clear()
+	question_with_answers = temp_questions_and_answers.pop_at(question_num)
+	question_with_answers = QuestionProfile.condense_question_with_answers(question_with_answers, 50, 65)
 	question_with_answers = QuestionProfile.randomize_answers(question_with_answers)
 	# Restore the questions if they are three or less
 	if (len(temp_questions_and_answers) <= 2):
@@ -100,3 +115,57 @@ func _on_pong_multiplayer_question_body_entered(_body):
 	# Hide the question powerup
 	pong_multiplayer_question.position = Vector2(100, -300)
 
+func _on_left_player_chose_a():
+	if (question_with_answers[QuestionProfile.ANSWER] == 1):
+		player_answered_correctly("left")
+	else:
+		player_answered_incorrectly("left")
+	print("pressed 1")
+func _on_left_player_chose_b():
+	if (question_with_answers[QuestionProfile.ANSWER] == 2):
+		player_answered_correctly("left")
+	else:
+		player_answered_incorrectly("left")
+	print("pressed 2")
+func _on_left_player_chose_c():
+	if (question_with_answers[QuestionProfile.ANSWER] == 3):
+		player_answered_correctly("left")
+	else:
+		player_answered_incorrectly("left")
+	print("pressed 3")
+func _on_left_player_chose_d():
+	if (question_with_answers[QuestionProfile.ANSWER] == 4):
+		player_answered_correctly("left")
+	else:
+		player_answered_incorrectly("left")
+	print("pressed 4")
+
+func _on_right_player_chose_a():
+	if (question_with_answers[QuestionProfile.ANSWER] == 1):
+		player_answered_correctly("right")
+	else:
+		player_answered_incorrectly("right")
+	print("pressed o")
+func _on_right_player_chose_b():
+	if (question_with_answers[QuestionProfile.ANSWER] == 2):
+		player_answered_correctly("right")
+	else:
+		player_answered_incorrectly("right")
+	print("pressed p")
+func _on_right_player_chose_c():
+	if (question_with_answers[QuestionProfile.ANSWER] == 3):
+		player_answered_correctly("right")
+	else:
+		player_answered_incorrectly("right")
+	print("pressed [")
+func _on_right_player_chose_d():
+	if (question_with_answers[QuestionProfile.ANSWER] == 4):
+		player_answered_correctly("right")
+	else:
+		player_answered_incorrectly("right")
+	print("pressed ]")
+
+func player_answered_correctly(x_player: String):
+	print(x_player, " answered correctly")
+func player_answered_incorrectly(x_player: String):
+	print(x_player, " answered incorrectly")

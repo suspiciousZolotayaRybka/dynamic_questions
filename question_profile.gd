@@ -90,7 +90,7 @@ func _get_is_single_entry_3_disabled():
 func _ready():
 	pass
 #TODO delete
-	QuestionProfile._set_num_questions(8)
+	QuestionProfile._set_num_questions(3)
 	QuestionProfile._set_current_page(1)
 	QuestionProfile._set_current_question(1)
 
@@ -102,21 +102,21 @@ func _ready():
 #	for i in 299:
 #		temp_array.append(["","","","","",-1])
 ##	QuestionProfile._set_questions_and_answers(temp_array)
+	QuestionProfile.questions_and_answers = [
+	["What is 2+2?","1","2","3","4",4],
+	["What is the color of grass?","green","yellow","pink","orange",1],
+	["What planet are humans from?","Mars","Earth","Jupiter","Venus",2],
+	]
 #	QuestionProfile.questions_and_answers = [
 #	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
 #	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],
 #	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces beginning with the President's role as:","Commander in Chief","Secretary of Defense","head of the legislative and judicial branches","liaison to the Secretary of Defense for Policy",1],
+#	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces. Who serves as Commander in Chief and has final command authority?","the President","the Secretary of State","the Secretary of Defense","the Chairman Joint Chiefs of Staff",1],
+#	["The President serves as Commander in Chief of the Armed Forces and has final command authority. However as head of the executive branch he is subject to the checks and balances system of:","the legislative and judicial branches","the Armed Forces Policy Council","the Uniform Code of Military Justice","the Department of Defense and Secretary of Defense",3],
+#	["By statute the chain of command runs from the President through the Secretary of Defense to:","the Combatant Commanders","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff","the Secretaries of the military departments",1],
+#	["When forces are assigned to the Combatant Commanders administrative control over those forces still typically flows through:","the Combatant Commanders","their respective service branch","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff",2],
+#	["Although the chain of command runs from the President through the Secretary of Defense to the Combatant Commanders a provision of this law permits the President to authorize communications through the Chairman Joint Chiefs of Staff placing the Chairman in the communications chain of command.","Key West Agreement","Air Force Letter 35.3","National Security Act of 1947","Goldwater-Nichols DoD Reorganization Act of 1986",4]
 #	]
-	QuestionProfile.questions_and_answers = [
-	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
-	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],
-	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces beginning with the President's role as:","Commander in Chief","Secretary of Defense","head of the legislative and judicial branches","liaison to the Secretary of Defense for Policy",1],
-	["The U.S. Constitution establishes the basic principle of civilian control of the U.S. Armed Forces. Who serves as Commander in Chief and has final command authority?","the President","the Secretary of State","the Secretary of Defense","the Chairman Joint Chiefs of Staff",1],
-	["The President serves as Commander in Chief of the Armed Forces and has final command authority. However as head of the executive branch he is subject to the checks and balances system of:","the legislative and judicial branches","the Armed Forces Policy Council","the Uniform Code of Military Justice","the Department of Defense and Secretary of Defense",3],
-	["By statute the chain of command runs from the President through the Secretary of Defense to:","the Combatant Commanders","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff","the Secretaries of the military departments",1],
-	["When forces are assigned to the Combatant Commanders administrative control over those forces still typically flows through:","the Combatant Commanders","their respective service branch","the Under Secretaries of Defense","the Chairman Joint Chiefs of Staff",2],
-	["Although the chain of command runs from the President through the Secretary of Defense to the Combatant Commanders a provision of this law permits the President to authorize communications through the Chairman Joint Chiefs of Staff placing the Chairman in the communications chain of command.","Key West Agreement","Air Force Letter 35.3","National Security Act of 1947","Goldwater-Nichols DoD Reorganization Act of 1986",4]
-	]
 #	QuestionProfile.questions_and_answers = [
 #	["What is your favorite pizza topping?", "Mushroom", "Pepperoni", "Cheese", "Sausage", 1],
 #	["What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 2],
@@ -147,6 +147,7 @@ func randomize_answers(question_with_answers: Array) -> Array:
 	var answer_d_new_pos: int
 	var temp_question_with_answers: Array = question_with_answers.duplicate(true)
 	var remaining_positions: Array = [1, 2, 3, 4]
+	var correct_answer: String = question_with_answers[question_with_answers[QuestionProfile.ANSWER]]
 	# Assign each new_pos variable
 	answer_a_new_pos = remaining_positions.pop_at(randi_range(0, 3))
 	answer_b_new_pos = remaining_positions.pop_at(randi_range(0, 2))
@@ -157,6 +158,10 @@ func randomize_answers(question_with_answers: Array) -> Array:
 	question_with_answers[answer_b_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_B]
 	question_with_answers[answer_c_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_C]
 	question_with_answers[answer_d_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_D]
+	# Find the correct answer change the correct answer to the proper index
+	for i in range(1, 5):
+		if (correct_answer == question_with_answers[i]):
+			question_with_answers[QuestionProfile.ANSWER] = i
 	return question_with_answers
 
 func condense_question_with_answers(temp_question_with_answers: Array,
@@ -172,7 +177,7 @@ func condense_question_with_answers(temp_question_with_answers: Array,
 	for character in temp_question_with_answers[QuestionProfile.QUESTION]:
 		char_count += 1
 		if char_count == max_question_char:
-			question = question.substr(0, current_char) + "-\n" + question.substr(current_char, len(question))
+			question = question.substr(0, current_char) + "-\n" + question.substr(current_char)
 			char_count = 0
 		current_char += 1
 	temp_question_with_answers[QuestionProfile.QUESTION] = question
@@ -184,12 +189,14 @@ func condense_question_with_answers(temp_question_with_answers: Array,
 		answer = temp_question_with_answers[i]
 		for character in answer:
 			char_count += 1
-			if char_count == max_answer_char:
-				print(answer)
-				answer = answer.substr(0, current_char) + "-\n" + answer.substr(current_char, len(answer))
+			if (char_count == max_answer_char):
+				# Add a line break if max_answer_char is reached
+				# Adds line break at the index preceding, no need to worry about it being the last character
+				answer = answer.substr(0, current_char) + "-\n" + answer.substr(current_char)
 				char_count = 0
 			current_char += 1
 		char_count = 0
+		current_char = 0
 		temp_question_with_answers[i] = answer
 	
 	return temp_question_with_answers
