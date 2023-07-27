@@ -160,18 +160,19 @@ wait_time = 0.4
 position = Vector2(632, 370)
 scale = Vector2(2, 2)
 
-[node name="PongMultiplayerLeftPlayerQuestionPopupContainer" type="Control" parent="PongMultiplayerMain"]
+[node name="PongMultiplayerLeftPlayerQuestionPopupContainer" type="Node2D" parent="PongMultiplayerMain"]
 process_mode = 2
-layout_mode = 3
-anchors_preset = 0
 
-[node name="PongMultiplayerRightPlayerQuestionPopupContainer" type="Control" parent="PongMultiplayerMain"]
+[node name="PongMultiplayerRightPlayerQuestionPopupContainer" type="Node2D" parent="PongMultiplayerMain"]
 process_mode = 2
-layout_mode = 3
-anchors_preset = 0
+
+[node name="PowerupTimer" type="Timer" parent="PongMultiplayerMain"]
+wait_time = 6.0
+one_shot = true
 
 [connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerLeftPlayerSide" to="PongMultiplayerMain" method="_on_pong_multiplayer_left_player_side_body_entered"]
 [connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerRightPlayerSide" to="PongMultiplayerMain" method="_on_pong_multiplayer_right_player_side_body_entered"]
 [connection signal="timeout" from="PongMultiplayerMain/PongMultiplayerCountdownTimer" to="PongMultiplayerMain" method="_on_pong_multiplayer_countdown_timer_timeout"]
 [connection signal="timeout" from="PongMultiplayerMain/PongMultiplayerScoreTimer" to="PongMultiplayerMain" method="_on_pong_multiplayer_score_timer_timeout"]
 [connection signal="body_entered" from="PongMultiplayerMain/PongMultiplayerQuestion" to="PongMultiplayerMain" method="_on_pong_multiplayer_question_body_entered"]
+[connection signal="timeout" from="PongMultiplayerMain/PowerupTimer" to="PongMultiplayerMain" method="_on_powerup_timer_timeout"]

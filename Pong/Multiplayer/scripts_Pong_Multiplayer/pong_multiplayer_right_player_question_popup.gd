@@ -31,7 +31,6 @@ func _process(_delta):
 	countdown_label.text = str(int(countdown_timer.time_left))
 
 func _on_pong_multiplayer_right_question_countdown_timeout():
-	print("right set visible false")
-	self.visible = false
 	countdown_timer_timeout_right.emit("right")
+	self.visible = false
 	get_tree().paused = false

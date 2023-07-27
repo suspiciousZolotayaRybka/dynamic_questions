@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 325.0
+var speed_multiplier: int = 5
 var direction: int
 
 func _physics_process(_delta):
@@ -15,7 +16,7 @@ func _physics_process(_delta):
 	
 	# Change the velocity accordingly 
 	if direction:
-		velocity.y = direction * SPEED
+		velocity.y = direction * SPEED * speed_multiplier
 	else:
 		velocity.y = move_toward(velocity.x, 0, SPEED)
 	
