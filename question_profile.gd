@@ -139,33 +139,49 @@ func _ready():
 #	]
 	#TODO Delete
 
-func randomize_answers(question_with_answers) -> Array:
-	print("randomized answers")
+func randomize_answers(question_with_answers: Array) -> Array:
+	# Declare variables to find the indices of the new positions 
+	var answer_a_new_pos: int
+	var answer_b_new_pos: int
+	var answer_c_new_pos: int
+	var answer_d_new_pos: int
+	var temp_question_with_answers: Array = question_with_answers.duplicate(true)
+	var remaining_positions: Array = [1, 2, 3, 4]
+	# Assign each new_pos variable
+	answer_a_new_pos = remaining_positions.pop_at(randi_range(0, 3))
+	answer_b_new_pos = remaining_positions.pop_at(randi_range(0, 2))
+	answer_c_new_pos = remaining_positions.pop_at(randi_range(0, 1))
+	answer_d_new_pos = remaining_positions.pop_at(0)
+	# Fill in the new positions of each variable
+	question_with_answers[answer_a_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_A]
+	question_with_answers[answer_b_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_B]
+	question_with_answers[answer_c_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_C]
+	question_with_answers[answer_d_new_pos] = temp_question_with_answers[QuestionProfile.ANSWER_D]
 	return question_with_answers
-	# TODO
 
-func condense_question_and_answers(temp_question_and_answers: Array,
+func condense_question_with_answers(temp_question_with_answers: Array,
 									max_question_char: int,
 									max_answer_char: int) -> Array:
+	# Dynamically condense when a line break is placed in question_with_answers depending on the size of the minigame
 	var char_count: int = 0
 	var current_char: int = 0
-	var question: String = temp_question_and_answers[QuestionProfile.QUESTION]
+	var question: String = temp_question_with_answers[QuestionProfile.QUESTION]
 	var answer: String
 	
 	# Place a line break every max_question_char spaces
-	for character in temp_question_and_answers[QuestionProfile.QUESTION]:
+	for character in temp_question_with_answers[QuestionProfile.QUESTION]:
 		char_count += 1
 		if char_count == max_question_char:
 			question = question.substr(0, current_char) + "-\n" + question.substr(current_char, len(question))
 			char_count = 0
 		current_char += 1
-	temp_question_and_answers[QuestionProfile.QUESTION] = question
+	temp_question_with_answers[QuestionProfile.QUESTION] = question
 	
 	# Place a line break every max_answer_char spaces
 	current_char = 0
 	char_count = 0
 	for i in range(1, 5):
-		answer = temp_question_and_answers[i]
+		answer = temp_question_with_answers[i]
 		for character in answer:
 			char_count += 1
 			if char_count == max_answer_char:
@@ -174,8 +190,8 @@ func condense_question_and_answers(temp_question_and_answers: Array,
 				char_count = 0
 			current_char += 1
 		char_count = 0
-		temp_question_and_answers[i] = answer
+		temp_question_with_answers[i] = answer
 	
-	return temp_question_and_answers
+	return temp_question_with_answers
 
 #Old parsing methods are in previous Git pushes in lines below this one, but have since been deleted in the msot previous releases and converted to JSON instead

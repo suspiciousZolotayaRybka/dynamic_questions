@@ -1,5 +1,7 @@
 extends Control
 
+@onready var countdown_label: Label = $PongMultiplayerLeftQuestionCountdownLabel
+@onready var countdown: Timer = $PongMultiplayerLeftQuestionCountdown
 
 # Listen for user input
 func _process(_delta):
@@ -11,6 +13,7 @@ func _process(_delta):
 		print("pressed c")
 	if Input.is_physical_key_pressed(KEY_V):
 		print("pressed v")
+	countdown_label.text = str(int(countdown.time_left))
 
 # Decide whether or not the answer is correct based on user input.
 func _on_answer_a_button_pressed():

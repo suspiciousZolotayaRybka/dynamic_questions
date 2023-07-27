@@ -72,7 +72,7 @@ func _on_pong_multiplayer_question_body_entered(_body):
 	# Find the question to show to the user, randomize, condense to proper size, and pop out of the temp array
 	var question_num: int = randi_range(0, (len(temp_questions_and_answers) - 1))
 	var question_with_answers: Array = temp_questions_and_answers.pop_at(question_num)
-	question_with_answers = QuestionProfile.condense_question_and_answers(question_with_answers, 50, 65)
+	question_with_answers = QuestionProfile.condense_question_with_answers(question_with_answers, 45, 65)
 	question_with_answers = QuestionProfile.randomize_answers(question_with_answers)
 	# Restore the questions if they are three or less
 	if (len(temp_questions_and_answers) <= 2):
