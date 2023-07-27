@@ -1,57 +1,37 @@
 extends Control
 
 @onready var countdown_label: Label = $PongMultiplayerLeftQuestionCountdownLabel
-@onready var countdown: Timer = $PongMultiplayerLeftQuestionCountdown
+@onready var countdown_timer: Timer = $PongMultiplayerLeftQuestionCountdown
 
-signal left_player_chose_a
-signal left_player_chose_b
-signal left_player_chose_c
-signal left_player_chose_d
+signal left_player_chose(option: int)
+signal countdown_timer_timeout_left(x_player: String)
 
 # Listen for user input
 func _process(_delta):
 	# Emit a signal depending on what the user enters
-	# Hide the player 
+	# After emitting the corresponding signal,
+	# set self visible false, and unpause the tree
 	if Input.is_physical_key_pressed(KEY_1):
-		left_player_chose_a.emit()
+		left_player_chose.emit(1)
 		self.visible = false
 		get_tree().paused = false
 	if Input.is_physical_key_pressed(KEY_2):
-		left_player_chose_b.emit()
+		left_player_chose.emit(2)
 		self.visible = false
 		get_tree().paused = false
 	if Input.is_physical_key_pressed(KEY_3):
-		left_player_chose_c.emit()
+		left_player_chose.emit(3)
 		self.visible = false
 		get_tree().paused = false
 	if Input.is_physical_key_pressed(KEY_4):
-		left_player_chose_d.emit()
+		left_player_chose.emit(4)
 		self.visible = false
 		get_tree().paused = false
-	countdown_label.text = str(int(countdown.time_left))
+	# Keep the countdown label updated
+	countdown_label.text = str(int(countdown_timer.time_left))
 
-# Decide whether or not the answer is correct based on user input.
-func _on_answer_a_button_pressed():
+func _on_pong_multiplayer_left_question_countdown_timeout():
+	print("left set visible false")
+	self.visible = false
+	countdown_timer_timeout_left.emit("left")
 	get_tree().paused = false
-	if (QuestionProfile.questions_and_answers[QuestionProfile.current_question][QuestionProfile.ANSWER] == 1):
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_correctly()
-	else:
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_incorrectly()
-func _on_answer_b_button_pressed():
-	get_tree().paused = false
-	if (QuestionProfile.questions_and_answers[QuestionProfile.current_question][QuestionProfile.ANSWER] == 2):
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_correctly()
-	else:
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_incorrectly()
-func _on_answer_c_button_pressed():
-	get_tree().paused = false
-	if (QuestionProfile.questions_and_answers[QuestionProfile.current_question][QuestionProfile.ANSWER] == 3):
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_correctly()
-	else:
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_incorrectly()
-func _on_answer_d_button_pressed():
-	get_tree().paused = false
-	if (QuestionProfile.questions_and_answers[QuestionProfile.current_question][QuestionProfile.ANSWER] == 4):
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_correctly()
-	else:
-		get_tree().get_root().find_child("PongSingleplayerMain", true, false).user_answered_incorrectly()

@@ -40,9 +40,9 @@ func _physics_process(delta):
 		elif (velocity.y < -3):
 			velocity.y = -1
 		# Reset balls that have a x velocity causing them to only move vertically
-		if ((0 < velocity.x) and (velocity.x < .2)):
+		if ((0 < velocity.x) and (velocity.x < .35)):
 			velocity.x = 1
-		if ((-.2 < velocity.x) and (velocity.x <= 0)):
+		if ((-.35 < velocity.x) and (velocity.x <= 0)):
 			velocity.x = -1
 		# Check to see who the last paddle was to hit the ball to prepare the proper question
 		if (collision_object.get_collider() == player_left):
