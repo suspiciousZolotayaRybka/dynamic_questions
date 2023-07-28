@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 600
-var hits_to_question = 1
+var hits_to_question = 5
 var is_last_hit_left: bool = false
 # TODO delete all last_hit references to right?
 var is_last_hit_right: bool = false
@@ -29,7 +29,7 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision_object.get_normal())
 		if (hits_to_question == 0):
 			get_tree().get_root().find_child("PongMultiplayerMain", true, false).show_question()
-			hits_to_question = 1
+			hits_to_question = 5
 		# Reset speedy balls from questions, prevents infinite speeds from happening
 		if (velocity.x > 3):
 			velocity.x = 1

@@ -11,19 +11,19 @@ func _process(_delta):
 	# Emit a signal depending on what the user enters
 	# After emitting the corresponding signal,
 	# set self visible false, and unpause the tree
-	if Input.is_physical_key_pressed(KEY_1):
+	if Input.is_action_just_pressed("KEY_1"):
 		left_player_chose.emit(1)
 		self.visible = false
 		get_tree().paused = false
-	if Input.is_physical_key_pressed(KEY_2):
+	if Input.is_action_just_pressed("KEY_2"):
 		left_player_chose.emit(2)
 		self.visible = false
 		get_tree().paused = false
-	if Input.is_physical_key_pressed(KEY_3):
+	if Input.is_action_just_pressed("KEY_3"):
 		left_player_chose.emit(3)
 		self.visible = false
 		get_tree().paused = false
-	if Input.is_physical_key_pressed(KEY_4):
+	if Input.is_action_just_pressed("KEY_4"):
 		left_player_chose.emit(4)
 		self.visible = false
 		get_tree().paused = false

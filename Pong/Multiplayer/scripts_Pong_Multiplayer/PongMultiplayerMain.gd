@@ -84,6 +84,7 @@ func _on_pong_multiplayer_countdown_timer_timeout():
 	countdown_label.visible = false
 
 func show_question():
+	#TODO delete testing: pong_multiplayer_question.position = Vector2(640, 360)
 	pong_multiplayer_question.position = Vector2 ([randi_range(150, 450), randi_range(830, 1000)][randi()%2], [randi_range(50, 260), randi_range(450, 600)][randi()%2])
 
 func _on_pong_multiplayer_question_body_entered(_body):
@@ -100,9 +101,7 @@ func _on_pong_multiplayer_question_body_entered(_body):
 	# Free the queue for other player's question popups so they do not interfere
 	var is_last_hit_left: bool = ball.is_last_hit_left
 	if (is_last_hit_left):
-		if (right_popup != null):
-			right_popup.queue_free()
-			right_popup = null
+		free_popup_queues()
 		left_popup = left_popup_scene.instantiate()
 		left_popup_container.add_child(left_popup)
 		# Retrieve the popup signals for left_popup
@@ -116,9 +115,7 @@ func _on_pong_multiplayer_question_body_entered(_body):
 		left_popup.countdown_timer.start()
 		left_popup.visible = true
 	else:
-		if (left_popup != null):
-			left_popup.queue_free()
-			left_popup = null
+		free_popup_queues()
 		right_popup = right_popup_scene.instantiate()
 		right_popup_container.add_child(right_popup)
 		# Retrieve the popup signals for right_popup
@@ -138,6 +135,14 @@ func _on_pong_multiplayer_question_body_entered(_body):
 	# Hide the question powerup
 	pong_multiplayer_question.position = Vector2(100, -300)
 
+func free_popup_queues():
+	if (right_popup != null):
+		right_popup.queue_free()
+		right_popup = null
+	if (left_popup != null):
+		left_popup.queue_free()
+		left_popup = null
+
 func _on_left_player_chose(option: int):
 	if (option == question_with_answers[QuestionProfile.ANSWER]):
 		player_answered_correctly("left")
@@ -153,25 +158,35 @@ func _on_right_player_chose(option: int):
 func player_answered_correctly(x_player: String):
 	score_sound.play()
 	powerup_timer.start()
+	ball.speed = 800
 	if (x_player == "left"):
 		LeftPlayerScore += 1
 		update_player_score("left")
-		left_player.speed_multiplier = 1.5
+		left_player.speed_multiplier = 3
+		ball.velocity.x = 1
+		print("sent ball to the right")
+		ball.velocity.y = [0.8,-0.8][randi_range(0, 1)]
 	elif (x_player == "right"):
 		RightPlayerScore += 1
 		update_player_score("right")
-		right_player.speed_multiplier = 1.5
-	print(x_player, " answered correctly")
+		right_player.speed_multiplier = 3
+		ball.velocity.x = -1
+		print("sent ball to the left")
+		ball.velocity.y = [0.8,-0.8][randi_range(0, 1)]
 
 func player_answered_incorrectly(x_player: String):
-	print(x_player)
+	error_sound.play()
+	ball.speed = 500
 	if (x_player == "left"):
-		pass
+		left_player.speed_multiplier = .75
+		ball.velocity.x = -1
 	elif (x_player == "right"):
-		pass
-	print(x_player, " answered incorrectly")
+		ball.velocity.x = 1
+		right_player.speed_multiplier = .75
 
 func _on_powerup_timer_timeout():
+	print("powerups finished")
+	ball.speed = 600
 	right_player.speed_multiplier = 1
 	left_player.speed_multiplier = 1
 
