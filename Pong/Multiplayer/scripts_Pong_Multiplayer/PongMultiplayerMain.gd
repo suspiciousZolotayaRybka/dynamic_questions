@@ -25,6 +25,7 @@ extends Node
 @onready var countdown_timer: Timer = $PongMultiplayerCountdownTimer
 @onready var powerup_timer: Timer = $PowerupTimer
 @onready var countdown_label: Label = $PongMultiplayerCountdownLabel
+@onready var answer_label: Label = $AnswerLabel
 
 
 func _ready():
@@ -134,12 +135,16 @@ func free_popup_queues():
 		left_popup = null
 
 func _on_left_player_chose(option: int):
+	answer_label.text = ""
+	answer_label.text = "Correct Answer: %s\nLeft Player Chose: %s"%[question_with_answers[question_with_answers[QuestionProfile.ANSWER]], question_with_answers[option]]
 	if (option == question_with_answers[QuestionProfile.ANSWER]):
 		player_answered_correctly("left")
 	else:
 		player_answered_incorrectly("left")
 
 func _on_right_player_chose(option: int):
+	answer_label.text = ""
+	answer_label.text = "Correct Answer: %s\nRight Player Chose: %s"%[question_with_answers[question_with_answers[QuestionProfile.ANSWER]], question_with_answers[option]]
 	if (option == question_with_answers[QuestionProfile.ANSWER]):
 		player_answered_correctly("right")
 	else:
@@ -148,6 +153,7 @@ func _on_right_player_chose(option: int):
 func player_answered_correctly(x_player: String):
 	score_sound.play()
 	powerup_timer.start()
+	answer_label.visible = true
 	ball.speed = 800
 	if (x_player == "left"):
 		LeftPlayerScore += 1
@@ -168,6 +174,8 @@ func player_answered_incorrectly(x_player: String):
 	error_sound.play()
 	powerup_timer.start()
 	ball.speed = 500
+	answer_label.text
+	answer_label.visible = true
 	if (x_player == "left"):
 		left_player.speed_multiplier = .75
 		ball.velocity.x = -1
@@ -182,9 +190,11 @@ func _on_powerup_timer_timeout():
 	print("powerups finished")
 	ball.speed = 600
 	print(ball.velocity)
+	# TODO find out what causes ball velocity to change strangely
 	print("\n\n\n\n\n")
 	right_player.speed_multiplier = 1
 	left_player.speed_multiplier = 1
+	answer_label.visible = false
 
 func update_player_score(x_player):
 	if (x_player == "left"):
