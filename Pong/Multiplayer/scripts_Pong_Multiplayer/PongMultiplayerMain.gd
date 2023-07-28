@@ -192,7 +192,7 @@ func update_player_score(x_player):
 		# Change the right player color to orange, and back to white when PongMultiplayerScoreTimer resets
 		$PongMultiplayerLeftPlayerScore.label_settings.font_color = Color.ORANGE_RED
 		$PongMultiplayerScoreTimer.start()
-		if LeftPlayerScore >= 20:
+		if LeftPlayerScore >= 10:
 			QuestionProfile.multiplayer_pong_winner = "Left Player"
 			get_tree().change_scene_to_file("res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_game_over.tscn")
 	elif (x_player == "right"):
@@ -200,6 +200,6 @@ func update_player_score(x_player):
 		# Change the right player color to orange, and back to white when PongMultiplayerScoreTimer resets
 		$PongMultiplayerRightPlayerScore.label_settings.font_color = Color.ORANGE_RED
 		$PongMultiplayerScoreTimer.start()
-		if RightPlayerScore >= 20:
+		if RightPlayerScore >= 10:
 			QuestionProfile.multiplayer_pong_winner = "Right Player"
 			get_tree().change_scene_to_file("res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_game_over.tscn")

@@ -22,7 +22,7 @@ func _ready():
 func _on_player_side_body_entered(_body):
 	score_achieved()
 	OpponentScore += 1
-	if OpponentScore >= 20:
+	if OpponentScore >= 10:
 		QuestionProfile.is_left_player_won_pong = false
 		get_tree().change_scene_to_file("res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerGameOver.tscn")
 	$OpponentScore.text = str(OpponentScore)
@@ -32,7 +32,7 @@ func _on_player_side_body_entered(_body):
 func _on_opponent_side_body_entered(_body):
 	score_achieved()
 	PlayerScore += 1
-	if PlayerScore >= 20:
+	if PlayerScore >= 10:
 		QuestionProfile.is_left_player_won_pong = true
 		get_tree().change_scene_to_file("res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerGameOver.tscn")
 	$PlayerScore.text = str(PlayerScore)
