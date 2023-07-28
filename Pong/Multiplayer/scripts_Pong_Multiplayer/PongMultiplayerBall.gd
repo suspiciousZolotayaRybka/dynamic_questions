@@ -30,20 +30,6 @@ func _physics_process(delta):
 		if (hits_to_question == 0):
 			get_tree().get_root().find_child("PongMultiplayerMain", true, false).show_question()
 			hits_to_question = 5
-		# Reset speedy balls from questions, prevents infinite speeds from happening
-		if (velocity.x > 3):
-			velocity.x = 1
-		elif (velocity.x < -3):
-			velocity.x = -1
-		if (velocity.y > 3):
-			velocity.y = 1
-		elif (velocity.y < -3):
-			velocity.y = -1
-		# Reset balls that have a x velocity causing them to only move vertically
-		if ((0 < velocity.x) and (velocity.x < .35)):
-			velocity.x = 1
-		if ((-.35 < velocity.x) and (velocity.x <= 0)):
-			velocity.x = -1
 		# Check to see who the last paddle was to hit the ball to prepare the proper question
 		if (collision_object.get_collider() == player_left):
 			is_last_hit_left = true
@@ -51,12 +37,33 @@ func _physics_process(delta):
 		if (collision_object.get_collider() == player_right):
 			is_last_hit_right = true
 			is_last_hit_left = false
-		# Hitting the ball a certain way causes it to disappear
-			# Presumably its speed increases exponentially for a frame before being reset
-				# but at that point it made it through area2d without registering, this should fix that
-		#TODO save or delete depending on if the bug happens again
-		if ((position.y < -5) or (position.y > 725) or (position.x < -150) or (position.x > 1430)):
-			restart_ball()
+	# Reset speedy balls from questions, prevents infinite speeds from happening
+	if (velocity.x > 3):
+		print("speedy velocity reset")
+		velocity.x = 1
+	elif (velocity.x < -3):
+		print("speedy velocity reset")
+		velocity.x = -1
+	if (velocity.y > 3):
+		print("speedy velocity reset")
+		velocity.y = 1
+	elif (velocity.y < -3):
+		print("speedy velocity reset")
+		velocity.y = -1
+	# Reset balls that have a x velocity causing them to only move vertically
+	if ((0 < velocity.x) and (velocity.x < .35)):
+		print("vertical velocity reset")
+		velocity.x = 1
+	if ((-.35 < velocity.x) and (velocity.x <= 0)):
+		print("vertical velocity reset")
+		velocity.x = -1
+	# Hitting the ball a certain way causes it to disappear
+		# Presumably its speed increases exponentially for a frame before being reset
+			# but at that point it made it through area2d without registering, this should fix that
+	#TODO save or delete depending on if the bug happens again
+	if ((position.y < -5) or (position.y > 725) or (position.x < -150) or (position.x > 1430)):
+		print("lost ball reset")
+		restart_ball()
 
 func stop_ball():
 	speed = 0

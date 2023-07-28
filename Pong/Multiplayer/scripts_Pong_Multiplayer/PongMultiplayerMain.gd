@@ -56,7 +56,7 @@ func _on_pong_multiplayer_left_player_side_body_entered(_body):
 		pass
 		#TODO QuestionProfile.is_left_player_won_pong = false
 		#TODO get_tree().change_scene_to_file("res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerGameOver.tscn")
-	update_player_score("left")
+	update_player_score("right")
 
 func _on_pong_multiplayer_right_player_side_body_entered(_body):
 	score_achieved()
@@ -65,7 +65,7 @@ func _on_pong_multiplayer_right_player_side_body_entered(_body):
 		pass
 		#TODO QuestionProfile.is_left_player_won_pong = false
 		#TODO get_tree().change_scene_to_file("res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerGameOver.tscn")
-	update_player_score("right")
+	update_player_score("left")
 
 func _on_pong_multiplayer_score_timer_timeout():
 	# Change each color back to white
@@ -164,29 +164,35 @@ func player_answered_correctly(x_player: String):
 		update_player_score("left")
 		left_player.speed_multiplier = 3
 		ball.velocity.x = 1
-		print("sent ball to the right")
+		print("correct sent ball to the right")
 		ball.velocity.y = [0.8,-0.8][randi_range(0, 1)]
 	elif (x_player == "right"):
 		RightPlayerScore += 1
 		update_player_score("right")
 		right_player.speed_multiplier = 3
 		ball.velocity.x = -1
-		print("sent ball to the left")
+		print("correct sent ball to the left")
 		ball.velocity.y = [0.8,-0.8][randi_range(0, 1)]
 
 func player_answered_incorrectly(x_player: String):
 	error_sound.play()
+	powerup_timer.start()
 	ball.speed = 500
 	if (x_player == "left"):
 		left_player.speed_multiplier = .75
 		ball.velocity.x = -1
+		print("incorrect sent ball to the left")
 	elif (x_player == "right"):
-		ball.velocity.x = 1
 		right_player.speed_multiplier = .75
+		ball.velocity.x = 1
+		print("incorrect sent ball to the right")
 
 func _on_powerup_timer_timeout():
+	print(ball.velocity)
 	print("powerups finished")
 	ball.speed = 600
+	print(ball.velocity)
+	print("\n\n\n\n\n")
 	right_player.speed_multiplier = 1
 	left_player.speed_multiplier = 1
 
