@@ -1,6 +1,7 @@
 extends Node
 
 # Declare variables
+var name_current_question_file: String
 var num_questions: set = _set_num_questions, get = _get_num_questions
 var current_question: set = _set_current_question, get = _get_current_question
 var num_pages: set = _set_num_pages, get = _get_num_pages
@@ -9,7 +10,11 @@ var questions_and_answers: set = _set_questions_and_answers, get = _get_question
 var current_section
 var is_single_entry_2_disabled: bool = false
 var is_single_entry_3_disabled: bool = false
+
+#TODO delete these and add them to their specific games as not to clog up QuestionProfile
 var is_left_player_won_pong: bool = false
+var multiplayer_pong_winner: String
+
 const QUESTION = 0
 const ANSWER_A = 1
 const ANSWER_B = 2

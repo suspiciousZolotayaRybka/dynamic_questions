@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqx5jirxsktbg"]
+
+[ext_resource type="Script" path="res://MainMenu/scripts_MainMenu/MainMenu.gd" id="1_0wehf"]
+[ext_resource type="Script" path="res://MainMenu/scripts_MainMenu/LoadFile.gd" id="2_opwrd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hbm8"]
+font_color = Color(0.882353, 0.960784, 0.996078, 1)
+
+[sub_resource type="Theme" id="Theme_oiigu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kdyyo"]
+font_size = 25
+font_color = Color(0.882353, 0.960784, 0.996078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8oyk2"]
+font_size = 25
+font_color = Color(0.882353, 0.960784, 0.996078, 1)
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_0wehf")
+
+[node name="EscapeInformationLabel" type="Label" parent="."]
+offset_right = 342.0
+offset_bottom = 26.0
+text = "Press ESC at any time to return to this menu"
+label_settings = SubResource("LabelSettings_1hbm8")
+
+[node name="CreateNewQuestionFile" type="Button" parent="."]
+offset_left = 300.0
+offset_top = 100.0
+offset_right = 550.0
+offset_bottom = 150.0
+text = "Create New Question File"
+
+[node name="LoadFile" type="Button" parent="."]
+offset_left = 300.0
+offset_top = 175.0
+offset_right = 550.0
+offset_bottom = 225.0
+theme = SubResource("Theme_oiigu")
+text = "Load Question File"
+script = ExtResource("2_opwrd")
+
+[node name="file_dialog_load_questions_initial" type="FileDialog" parent="LoadFile"]
+title = "Open a File"
+position = Vector2i(330, 150)
+size = Vector2i(500, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[node name="save_load_error_initial" type="AcceptDialog" parent="LoadFile"]
+position = Vector2i(330, 276)
+
+[node name="overwrite_warning_initial" type="AcceptDialog" parent="LoadFile"]
+title = "WARNING"
+position = Vector2i(330, 276)
+dialog_text = "Don't overwrite root folders"
+
+[node name="CurrentQuestionFileLabel" type="Label" parent="."]
+offset_left = 325.0
+offset_top = 225.0
+offset_right = 675.0
+offset_bottom = 263.0
+text = "Current Question File: Empty"
+label_settings = SubResource("LabelSettings_kdyyo")
+vertical_alignment = 1
+
+[node name="EditQuestionFile" type="Button" parent="."]
+offset_left = 300.0
+offset_top = 285.0
+offset_right = 550.0
+offset_bottom = 335.0
+text = "Edit Current Question File"
+
+[node name="PlayGames" type="Button" parent="."]
+offset_left = 300.0
+offset_top = 360.0
+offset_right = 550.0
+offset_bottom = 410.0
+text = "Play Games With Questions"
+
+[node name="GamePopupMenu" type="PopupMenu" parent="PlayGames"]
+position = Vector2i(550, 300)
+item_count = 2
+item_0/text = "Cancel"
+item_0/id = 0
+item_1/text = "Pong"
+item_1/id = 1
+
+[node name="UploadFileWarning" type="Label" parent="."]
+offset_left = 600.0
+offset_top = 310.0
+offset_right = 842.0
+offset_bottom = 386.0
+text = "Upload a file first to
+ edit or play games!"
+label_settings = SubResource("LabelSettings_8oyk2")
+
+[connection signal="pressed" from="CreateNewQuestionFile" to="." method="_on_create_new_question_file_pressed"]
+[connection signal="pressed" from="LoadFile" to="LoadFile" method="_on_pressed"]
+[connection signal="file_selected" from="LoadFile/file_dialog_load_questions_initial" to="LoadFile" method="_on_file_dialog_load_questions_initial_file_selected"]
+[connection signal="pressed" from="EditQuestionFile" to="." method="_on_edit_question_file_pressed"]
+[connection signal="pressed" from="PlayGames" to="." method="_on_play_games_pressed"]
+[connection signal="index_pressed" from="PlayGames/GamePopupMenu" to="." method="_on_game_popup_menu_index_pressed"]

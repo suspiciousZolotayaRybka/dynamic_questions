@@ -34,6 +34,20 @@ func _physics_process(delta):
 			velocity.y = 1
 		elif (velocity.y < -3):
 			velocity.y = -1
+	# Reset balls that have a x velocity causing them to only move vertically
+	if ((0 < velocity.x) and (velocity.x < .35)):
+		print("vertical velocity reset")
+		velocity.x = 1
+	if ((-.35 < velocity.x) and (velocity.x <= 0)):
+		print("vertical velocity reset")
+		velocity.x = -1
+	# Hitting the ball a certain way causes it to disappear
+		# Presumably its speed increases exponentially for a frame before being reset
+			# but at that point it made it through area2d without registering, this should fix that
+	#TODO save or delete depending on if the bug happens again
+	if ((position.y < -5) or (position.y > 725) or (position.x < -150) or (position.x > 1430)):
+		print("lost ball reset")
+		restart_ball()
 
 func stop_ball():
 	speed = 0

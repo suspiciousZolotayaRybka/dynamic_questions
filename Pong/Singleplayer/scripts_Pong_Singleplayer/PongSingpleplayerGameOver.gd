@@ -23,12 +23,7 @@ func _on_question_label_timer_title_timeout():
 		is_orange = true
 
 func _on_button_title_pressed():
-	print("You played multiplayer!")
+	get_tree().change_scene_to_file("res://Pong/Multiplayer/scenes_Pong_Multiplayer/pong_multiplayer_level.tscn")
 
 func _on_singleplayer_button_pressed():
 	get_tree().change_scene_to_file("res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerLevel.tscn")
-
-func player_won():
-	print("plyaer won in game over")
-func player_lost():
-	print("plyaer lost in game over")

@@ -6,7 +6,6 @@ const SPEED = 400.0
 
 func _physics_process(_delta):
 	var direction = Input.get_axis("ui_up", "ui_down")
-	print(direction)
 	if direction:
 		velocity.y = direction * SPEED
 	else:

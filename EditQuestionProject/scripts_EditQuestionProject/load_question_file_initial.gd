@@ -1,6 +1,3 @@
-# Author: Isaac Finehout
-# Date: 25 July 2023
-# Purpose: Control the load button located on the initial screen
 extends Button
 
 @onready var overwrite_warning_dialog: AcceptDialog = $overwrite_warning_initial
