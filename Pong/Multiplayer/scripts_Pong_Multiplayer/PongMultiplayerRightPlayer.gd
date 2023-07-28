@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 325.0
-var speed_multiplier: int = 5
+var speed_multiplier: int = 1
 var direction: int
 
 func _physics_process(_delta):

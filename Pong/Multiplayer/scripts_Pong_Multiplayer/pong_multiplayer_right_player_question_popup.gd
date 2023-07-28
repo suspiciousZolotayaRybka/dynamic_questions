@@ -8,22 +8,23 @@ signal countdown_timer_timeout_right(x_player: String)
 
 # Listen for user input
 func _process(_delta):
+	
 	# Emit a signal depending on what the user enters
 	# After emitting the corresponding signal,
 	# set self visible false, and unpause the tree
-	if Input.is_physical_key_pressed(KEY_O):
+	if Input.is_action_just_pressed("KEY_O"):
 		right_player_chose.emit(1)
 		self.visible = false
 		get_tree().paused = false
-	if Input.is_physical_key_pressed(KEY_P):
+	if Input.is_action_just_pressed("KEY_P"):
 		right_player_chose.emit(2)
 		self.visible = false
 		get_tree().paused = false
-	if Input.is_physical_key_pressed(KEY_BRACKETLEFT):
+	if Input.is_action_just_pressed("KEY_BRACKETLEFT"):
 		right_player_chose.emit(3)
 		self.visible = false
 		get_tree().paused = false
-	if Input.is_physical_key_pressed(KEY_BRACKETRIGHT):
+	if Input.is_action_just_pressed("KEY_BRACKETRIGHT"):
 		right_player_chose.emit(4)
 		self.visible = false
 		get_tree().paused = false
