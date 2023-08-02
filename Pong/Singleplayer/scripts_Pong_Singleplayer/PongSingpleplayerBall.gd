@@ -47,6 +47,7 @@ func _physics_process(delta):
 	#TODO save or delete depending on if the bug happens again
 	if ((position.y < -5) or (position.y > 725) or (position.x < -150) or (position.x > 1430)):
 		print("lost ball reset")
+		self.position = Vector2(640, 340)
 		restart_ball()
 
 func stop_ball():
