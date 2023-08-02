@@ -158,14 +158,14 @@ func player_answered_correctly(x_player: String):
 	if (x_player == "left"):
 		LeftPlayerScore += 1
 		update_player_score("left")
-		left_player.speed_multiplier = 3
+		left_player.speed_multiplier = 2
 		ball.velocity.x = 1
 		print("correct sent ball to the right")
 		ball.velocity.y = [0.8,-0.8][randi_range(0, 1)]
 	elif (x_player == "right"):
 		RightPlayerScore += 1
 		update_player_score("right")
-		right_player.speed_multiplier = 3
+		right_player.speed_multiplier = 2
 		ball.velocity.x = -1
 		print("correct sent ball to the left")
 		ball.velocity.y = [0.8,-0.8][randi_range(0, 1)]

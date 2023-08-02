@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 325.0
+const SPEED = 450.0
 var speed_multiplier: float = 1
 var direction: int
 

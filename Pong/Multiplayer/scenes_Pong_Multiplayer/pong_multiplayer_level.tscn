@@ -163,7 +163,7 @@ wait_time = 0.4
 
 [node name="PongMultiplayerQuestion" parent="PongMultiplayerMain" instance=ExtResource("8_45ms8")]
 position = Vector2(100, -300)
-scale = Vector2(2, 2)
+scale = Vector2(6, 6)
 
 [node name="PongMultiplayerLeftPlayerQuestionPopupContainer" type="Node2D" parent="PongMultiplayerMain"]
 process_mode = 2

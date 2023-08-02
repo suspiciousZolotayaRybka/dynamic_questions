@@ -152,6 +152,7 @@ stream = ExtResource("7_5fajm")
 
 [node name="Question" parent="PongSingleplayerMain" instance=ExtResource("8_tx8ju")]
 position = Vector2(100, -300)
+scale = Vector2(2.5, 2.5)
 
 [node name="QuestionPopup" parent="PongSingleplayerMain" instance=ExtResource("9_ce0iw")]
 visible = false
