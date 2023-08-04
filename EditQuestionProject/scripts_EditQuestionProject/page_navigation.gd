@@ -90,7 +90,7 @@ func _on_add_question_pressed():
 	# Don't let the user enter over 300 questions
 	if (QuestionProfile._get_num_questions() < 300):
 		var temp_array = QuestionProfile._get_questions_and_answers()
-		temp_array.insert(QuestionProfile._get_current_question(), ["","","","","",-1])
+		temp_array.insert(QuestionProfile._get_current_question() + 1, ["","","","","",-1])
 		QuestionProfile._set_num_questions(QuestionProfile._get_num_questions() + 1)
 		update_page_options()
 		# Update the question label

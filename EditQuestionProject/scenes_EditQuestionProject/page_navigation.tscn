@@ -164,6 +164,7 @@ access = 2
 
 [node name="change_question_choice" type="PopupMenu" parent="."]
 position = Vector2i(330, 276)
+max_size = Vector2i(32768, 350)
 
 [connection signal="mouse_entered" from="menu_options_reference_rect/reference_rect_boundary_entry" to="." method="_on_reference_rect_boundary_entry_mouse_entered"]
 [connection signal="mouse_entered" from="menu_options_reference_rect/reference_rect_boundary_4" to="." method="_on_reference_rect_boundary_4_mouse_entered"]
