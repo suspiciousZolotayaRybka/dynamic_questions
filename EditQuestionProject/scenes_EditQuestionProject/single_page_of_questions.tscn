@@ -77,6 +77,13 @@ position = Vector2(900, 100)
 [node name="warning_dialog" type="AcceptDialog" parent="."]
 position = Vector2i(330, 276)
 
+[node name="ReturnToMainMenuButton" type="Button" parent="."]
+offset_top = 667.0
+offset_right = 291.0
+offset_bottom = 720.0
+text = "Return to Main Menu"
+
 [connection signal="mouse_entered" from="first_section" to="single_entry_1" method="_on_first_section_mouse_entered"]
 [connection signal="mouse_entered" from="second_section" to="single_entry_2" method="_on_second_section_mouse_entered"]
 [connection signal="mouse_entered" from="third_section" to="single_entry_3" method="_on_third_section_mouse_entered"]
+[connection signal="pressed" from="ReturnToMainMenuButton" to="." method="_on_return_to_main_menu_button_pressed"]

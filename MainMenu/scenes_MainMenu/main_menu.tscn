@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqx5jirxsktbg"]
+[gd_scene load_steps=6 format=3 uid="uid://bqx5jirxsktbg"]
 
 [ext_resource type="Script" path="res://MainMenu/scripts_MainMenu/MainMenu.gd" id="1_0wehf"]
 [ext_resource type="Script" path="res://MainMenu/scripts_MainMenu/LoadFile.gd" id="2_opwrd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_1hbm8"]
-font_color = Color(0.882353, 0.960784, 0.996078, 1)
 
 [sub_resource type="Theme" id="Theme_oiigu"]
 
@@ -18,12 +15,6 @@ font_color = Color(0.882353, 0.960784, 0.996078, 1)
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_0wehf")
-
-[node name="EscapeInformationLabel" type="Label" parent="."]
-offset_right = 342.0
-offset_bottom = 26.0
-text = "Press ESC at any time to return to this menu"
-label_settings = SubResource("LabelSettings_1hbm8")
 
 [node name="CreateNewQuestionFile" type="Button" parent="."]
 offset_left = 300.0

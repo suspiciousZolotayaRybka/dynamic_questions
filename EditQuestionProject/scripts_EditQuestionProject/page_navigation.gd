@@ -4,6 +4,8 @@
 
 extends Node2D
 
+var temp_file_name: String
+
 # Initialize all variables for page navigation
 func _ready():
 	# Set page_label and question_label
@@ -179,11 +181,12 @@ func _on_load_question_file_pressed():
 	$overwrite_warning.visible = true
 
 func _on_file_dialog_load_question_file_selected(path):
-	# Opent he load file
+	# Open the load file
 	var json_string
 	var load_file = FileAccess.open(path, FileAccess.READ)
 	if load_file != null:  # Ensure the file was successfully opened
 		json_string = load_file.get_as_text()
+		temp_file_name = load_file.get_path()
 		load_file.close()
 	else:
 		# An error occurred
@@ -200,6 +203,7 @@ func _on_file_dialog_load_question_file_selected(path):
 			QuestionProfile._set_questions_and_answers(data_received)
 			QuestionProfile._set_num_questions(len(QuestionProfile._get_questions_and_answers()))
 			QuestionProfile._set_current_page(1)
+			QuestionProfile.name_current_question_file = temp_file_name
 		else:
 			# An error occurred
 			$save_load_error.dialog_text = "Unexpected data in file"

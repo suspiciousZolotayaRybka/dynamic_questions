@@ -74,6 +74,8 @@ func _set_is_single_entry_2_disabled(new_is_single_entry_2_disabled):
 	is_single_entry_2_disabled = new_is_single_entry_2_disabled
 func _set_is_single_entry_3_disabled(new_is_single_entry_3_disabled):
 	is_single_entry_3_disabled = new_is_single_entry_3_disabled
+func _set_name_current_question_file(new_name_current_question_file):
+	name_current_question_file = new_name_current_question_file
 
 # Getters
 func _get_num_questions():
@@ -95,9 +97,10 @@ func _get_is_single_entry_3_disabled():
 func _ready():
 	pass
 #TODO delete
-	QuestionProfile._set_num_questions(3)
-	QuestionProfile._set_current_page(1)
-	QuestionProfile._set_current_question(1)
+
+#	QuestionProfile._set_num_questions(3)
+#	QuestionProfile._set_current_page(1)
+#	QuestionProfile._set_current_question(1)
 
 #	get_tree().get_root().find_child("first_section_outline", true, false).editor_only = false
 #	get_tree().get_root().find_child("second_section_outline", true, false).editor_only = true
@@ -107,11 +110,11 @@ func _ready():
 #	for i in 299:
 #		temp_array.append(["","","","","",-1])
 ##	QuestionProfile._set_questions_and_answers(temp_array)
-	QuestionProfile.questions_and_answers = [
-	["What is 2+2?","1","2","3","4",4],
-	["What is the color of grass?","green","yellow","pink","orange",1],
-	["What planet are humans from?","Mars","Earth","Jupiter","Venus",2],
-	]
+#	QuestionProfile.questions_and_answers = [
+#	["What is 2+2?","1","2","3","4",4],
+#	["What is the color of grass?","green","yellow","pink","orange",1],
+#	["What planet are humans from?","Mars","Earth","Jupiter","Venus",2],
+#	]
 #	QuestionProfile.questions_and_answers = [
 #	["Since the birth of our Nation policies and directives have been made by:","the Joint Staff","military leaders","civilians assigned to the military and the executive and legislative branches","the Chairman of the Joint Chiefs of Staff with the advice and consent of the senate",3],
 #	["What establishes the basic principle of civilian control of the U.S. Armed Forces?","the U.S. Constitution","the Law of Armed Conflict","the British Articles of War","the Uniform Code of Military Justice",1],

@@ -12,6 +12,7 @@ func _ready():
 	$confirm_questions.visible = false
 	self.text = "Enter Number of Questions"
 	self.disabled = true
+	QuestionProfile._set_name_current_question_file("")
 
 # the parameter user_input is taken from the line edit, whatever the user inputs.
 # is_valid_input is assigned return value of get_is_valid_input

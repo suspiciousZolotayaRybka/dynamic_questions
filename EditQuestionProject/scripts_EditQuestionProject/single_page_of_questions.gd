@@ -13,3 +13,6 @@ func _ready():
 	if (QuestionProfile.current_page != QuestionProfile.num_pages):
 		# If the user is on the last page, do no enable the next button
 		next_button.disabled = false
+
+func _on_return_to_main_menu_button_pressed():
+	get_tree().change_scene_to_file("res://MainMenu/scenes_MainMenu/main_menu.tscn")

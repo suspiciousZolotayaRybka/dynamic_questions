@@ -29,3 +29,6 @@ func _on_pong_multiplayer_game_over_button_title_pressed():
 
 func _on_pong_multiplayer_game_over_singleplayer_button_pressed():
 	get_tree().change_scene_to_file("res://Pong/Singleplayer/scenes_Pong_Singleplayer/PongSingleplayerLevel.tscn")
+
+func _on_return_to_main_menu_pressed():
+	get_tree().change_scene_to_file("res://MainMenu/scenes_MainMenu/main_menu.tscn")
