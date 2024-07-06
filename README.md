@@ -9,4 +9,4 @@ have been shown with Space Invader and Mario-esque games
 ![Test](https://github.com/suspiciousZolotayaRybka/dynamic_questions/assets/116288117/24f650a4-3beb-4254-a563-bb29adaad4a1)
 ![Test_2](https://github.com/suspiciousZolotayaRybka/dynamic_questions/assets/116288117/9873839b-26bc-4d81-a1aa-97ecbd81e750)
 
-Air Force Project Presentation: [https://www.dvidshub.net/video/895614/2023-spark-tank-submission-gamification-multiple-choice-questions](https://www.dvidshub.net/video/895614/2023-spark-tank-submission-gamification-multiple-choice-questions)
+Air Force Project Presentation: https://www.dvidshub.net/video/895614/2023-spark-tank-submission-gamification-multiple-choice-questions
