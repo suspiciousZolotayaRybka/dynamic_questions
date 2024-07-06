@@ -1,5 +1,3 @@
-Air Force Project Presentation: https://www.dvidshub.net/video/895614/2023-spark-tank-submission-gamification-multiple-choice-questions
-
 This is an application that allows users to enter multiple choice questions, then play games with those questions. So far, the only full game added is pong, but proof of concepts
 have been shown with Space Invader and Mario-esque games
 ![MultipleChoiceQuestions](https://github.com/suspiciousZolotayaRybka/dynamic_questions/assets/116288117/8fd77df0-290b-4f27-9c5a-edeac8f5c5fb)
@@ -10,3 +8,5 @@ have been shown with Space Invader and Mario-esque games
 ![SpaceInvaders](https://github.com/suspiciousZolotayaRybka/dynamic_questions/assets/116288117/14d5c57f-5f57-43c3-8192-625ebe7fdecb)
 ![Test](https://github.com/suspiciousZolotayaRybka/dynamic_questions/assets/116288117/24f650a4-3beb-4254-a563-bb29adaad4a1)
 ![Test_2](https://github.com/suspiciousZolotayaRybka/dynamic_questions/assets/116288117/9873839b-26bc-4d81-a1aa-97ecbd81e750)
+
+Air Force Project Presentation: https://www.dvidshub.net/video/895614/2023-spark-tank-submission-gamification-multiple-choice-questions
